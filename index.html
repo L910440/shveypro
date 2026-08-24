@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ШвейПро — пошив сумок, рюкзаков и текстильных изделий на заказ для бизнеса</title>
+<style>
+  :root {
+    --dark: #1f2420;
+    --accent: #c9a15a;
+    --bg-light: #f7f5f1;
+    --text: #2b2b28;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: #fff;
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { line-height: 1.25; }
+  a { color: inherit; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--dark); color: #fff;
+    padding: 14px 0;
+  }
+  header .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-weight: 700; font-size: 20px; letter-spacing: 0.5px; }
+  .header-btn {
+    background: var(--accent); color: var(--dark);
+    padding: 10px 18px; border-radius: 6px; text-decoration: none;
+    font-weight: 600; font-size: 14px;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--dark); color: #fff;
+    padding: 60px 0 80px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 34px; max-width: 700px; margin: 0 auto 16px; }
+  .hero p.sub { font-size: 18px; color: #d8d4c8; max-width: 600px; margin: 0 auto 30px; }
+  .cta-btn {
+    display: inline-block; background: var(--accent); color: var(--dark);
+    padding: 16px 32px; border-radius: 8px; text-decoration: none;
+    font-weight: 700; font-size: 16px;
+  }
+  .hero-stats {
+    display: flex; justify-content: center; gap: 40px;
+    margin-top: 50px; flex-wrap: wrap;
+  }
+  .hero-stats div { text-align: center; }
+  .hero-stats .num { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .hero-stats .label { font-size: 14px; color: #d8d4c8; }
+
+  /* Sections */
+  section { padding: 60px 0; }
+  section h2 {
+    font-size: 28px; text-align: center; margin-bottom: 40px;
+  }
+  .bg-light { background: var(--bg-light); }
+
+  /* About */
+  .about-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center;
+    margin-top: 20px;
+  }
+  .about-grid .card { padding: 20px; }
+  .about-grid .num { font-size: 30px; font-weight: 700; color: var(--accent); }
+
+  /* Products */
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .product-card {
+    border: 1px solid #e5e2da; border-radius: 10px; padding: 24px;
+    text-align: center; transition: transform 0.15s;
+  }
+  .product-card:hover { transform: translateY(-4px); }
+  .product-card .icon { font-size: 34px; margin-bottom: 10px; }
+  .product-card h3 { font-size: 17px; margin-bottom: 6px; }
+  .product-card p { font-size: 14px; color: #666; }
+
+  /* Why us */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    background: #fff; border-left: 4px solid var(--accent);
+    padding: 20px; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .why-card h3 { font-size: 16px; margin-bottom: 8px; }
+  .why-card p { font-size: 14px; color: #555; }
+
+  /* Testimonials */
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .testimonial {
+    background: #fff; border: 1px solid #e5e2da; border-radius: 10px;
+    padding: 24px;
+  }
+  .testimonial .stars { color: var(--accent); margin-bottom: 10px; }
+  .testimonial p.quote { font-size: 14px; font-style: italic; margin-bottom: 14px; }
+  .testimonial .author { font-size: 13px; font-weight: 600; color: #444; }
+
+  /* Process */
+  .steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    text-align: center;
+  }
+  .step .step-num {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--accent); color: var(--dark);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; margin: 0 auto 14px;
+  }
+  .step h3 { font-size: 15px; margin-bottom: 6px; }
+  .step p { font-size: 13px; color: #666; }
+
+  /* Materials */
+  .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .materials-list li { list-style: none; background: #fff; border: 1px solid #e5e2da; padding: 16px; border-radius: 8px; font-size: 14px; }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid #e5e2da; padding: 18px 0; }
+  .faq-item h3 { font-size: 16px; margin-bottom: 6px; }
+  .faq-item p { font-size: 14px; color: #555; }
+
+  /* Order form */
+  .order-section { background: var(--dark); color: #fff; text-align: center; }
+  .order-section h2 { color: #fff; }
+  .order-form {
+    max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;
+  }
+  .order-form input, .order-form textarea {
+    padding: 12px 14px; border-radius: 6px; border: none; font-size: 14px;
+  }
+  .order-form button {
+    background: var(--accent); color: var(--dark); border: none;
+    padding: 14px; border-radius: 6px; font-weight: 700; font-size: 15px; cursor: pointer;
+  }
+
+  /* Footer */
+  footer {
+    background: #141713; color: #999; text-align: center; padding: 30px 0; font-size: 13px;
+  }
+
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">ШвейПро</div>
+    <a href="#order" class="header-btn">Оставить заявку</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Пошив сумок, рюкзаков и текстильных изделий на заказ для бизнеса</h1>
+    <p class="sub">От макета до упакованной партии — полный цикл производства на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.</p>
+    <a href="#order" class="cta-btn">Рассчитать стоимость заказа</a>
+    <div class="hero-stats">
+      <div><div class="num">от 50 шт</div><div class="label">минимальная партия</div></div>
+      <div><div class="num">полный цикл</div><div class="label">от макета до упаковки</div></div>
+      <div><div class="num">образец</div><div class="label">перед запуском партии</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>О производстве</h2>
+    <div class="about-grid">
+      <div class="card">
+        <div class="num">10+ лет</div>
+        <div>опыта в пошиве изделий для бизнеса</div>
+      </div>
+      <div class="card">
+        <div class="num">20+ единиц</div>
+        <div>швейного и раскройного оборудования</div>
+      </div>
+      <div class="card">
+        <div class="num">300 м²</div>
+        <div>собственного производственного цеха</div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:24px; font-size:13px; color:#999;">* цифры примерные, для готового прототипа — замените на реальные данные производства</p>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <h2>Что мы шьём</h2>
+    <div class="products-grid">
+      <div class="product-card"><div class="icon">👜</div><h3>Сумки</h3><p>из кожи, экокожи и плотного текстиля</p></div>
+      <div class="product-card"><div class="icon">🎒</div><h3>Рюкзаки</h3><p>деловые, спортивные, промо-модели</p></div>
+      <div class="product-card"><div class="icon">🛍️</div><h3>Шопперы</h3><p>тканевые и брендированные</p></div>
+      <div class="product-card"><div class="icon">💼</div><h3>Косметички</h3><p>любых форм и размеров</p></div>
+      <div class="product-card"><div class="icon">📱</div><h3>Чехлы</h3><p>для техники и аксессуаров</p></div>
+      <div class="product-card"><div class="icon">🗂️</div><h3>Органайзеры</h3><p>для дома, офиса, путешествий</p></div>
+      <div class="product-card"><div class="icon">🏢</div><h3>Корпоративная продукция</h3><p>подарки и мерч для сотрудников и клиентов</p></div>
+      <div class="product-card"><div class="icon">✂️</div><h3>Индивидуальные изделия</h3><p>по вашему техническому заданию</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Почему выбирают нас</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>🏭 Полный цикл под одной крышей</h3>
+        <p>От разработки макета до упаковки готовой партии — не нужно искать разных подрядчиков.</p>
+      </div>
+      <div class="why-card">
+        <h3>📐 Работаем с любым форматом ТЗ</h3>
+        <p>Присылаете фото, эскиз, образец или готовые лекала — даже без технической документации разберёмся и предложим решение.</p>
+      </div>
+      <div class="why-card">
+        <h3>📦 Маленькие партии без переплаты</h3>
+        <p>Не обязательно заказывать сразу тысячу штук — можем скорректировать модель без резкого удорожания.</p>
+      </div>
+      <div class="why-card">
+        <h3>🔍 Сначала образец, потом партия</h3>
+        <p>Вы видите и утверждаете готовое изделие до запуска основного производства.</p>
+      </div>
+      <div class="why-card">
+        <h3>✅ Контроль качества на каждом этапе</h3>
+        <p>Проверяем швы, фурнитуру и материалы на всех стадиях — не только на выходе.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <h2>Отзывы заказчиков</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="quote">«Заказывали партию корпоративных рюкзаков — сделали быстро, качество швов отличное, все изделия одинаковые, без брака».</p>
+        <div class="author">— пример отзыва, замените на реальный</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="quote">«Понравилось, что сначала прислали образец на согласование — ошибок в итоговой партии не было».</p>
+        <div class="author">— пример отзыва, замените на реальный</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="quote">«Работаем уже второй год, всегда укладываются в сроки, материалы именно те, что обсуждали».</p>
+        <div class="author">— пример отзыва, замените на реальный</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Как проходит работа</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Заявка</h3><p>Присылаете фото, эскиз или ТЗ — обсуждаем детали и материалы</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Образец</h3><p>Шьём один экземпляр на согласование</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Партия</h3><p>После утверждения запускаем производство всей партии</p></div>
+      <div class="step"><div class="step-num">4</div><h3>Упаковка и отправка</h3><p>Упаковываем и передаём готовую партию</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <h2>С какими материалами работаем</h2>
+    <ul class="materials-list">
+      <li>Натуральная кожа</li>
+      <li>Искусственная кожа (экокожа)</li>
+      <li>Плотный текстиль и брезент</li>
+      <li>Технические ткани (влагостойкие, износостойкие)</li>
+      <li>Подкладочные и укрепляющие материалы</li>
+      <li>Фурнитура: молнии, карабины, стропы</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Частые вопросы</h2>
+    <div class="faq-item">
+      <h3>Какой минимальный тираж?</h3>
+      <p>От 50 изделий на партию. Возможны исключения — обсуждается индивидуально.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Можно заказать по одному фото, без лекал?</h3>
+      <p>Да, разработаем лекала сами на основе фото, эскиза или образца изделия.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Сколько занимает производство партии?</h3>
+      <p>Зависит от объёма и сложности изделия — точный срок называем после согласования образца.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Можно вносить изменения после старта?</h3>
+      <p>До запуска партии — да, на этапе согласования образца. После старта партии изменения обсуждаются отдельно.</p>
+    </div>
+  </div>
+</section>
+
+<section class="order-section" id="order">
+  <div class="container">
+    <h2>Оставить заявку на расчёт стоимости</h2>
+    <form class="order-form">
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="tel" placeholder="Телефон или Telegram" required>
+      <textarea placeholder="Что нужно пошить и в каком количестве" rows="3"></textarea>
+      <button type="submit">Отправить заявку</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>ШвейПро — пошив изделий на заказ для бизнеса</p>
+    <p>Телефон / Telegram / Email — укажите здесь реальные контакты</p>
+  </div>
+</footer>
+
+</body>
+</html>
