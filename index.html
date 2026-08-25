@@ -6,10 +6,11 @@
 <title>ШвейПро — пошив сумок, рюкзаков и текстильных изделий на заказ для бизнеса</title>
 <style>
   :root {
-    --dark: #1f2420;
-    --accent: #c9a15a;
-    --bg-light: #f7f5f1;
-    --text: #2b2b28;
+    --dark: #E8630A;
+    --dark-deep: #C4520A;
+    --accent: #0F8A7A;
+    --bg-light: #FFF3E6;
+    --text: #3A2A1F;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -17,6 +18,7 @@
     color: var(--text);
     line-height: 1.6;
     background: #fff;
+    font-weight: 500;
   }
   .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
   h1, h2, h3 { line-height: 1.25; }
@@ -31,7 +33,7 @@
   header .container { display: flex; justify-content: space-between; align-items: center; }
   .logo { font-weight: 700; font-size: 20px; letter-spacing: 0.5px; }
   .header-btn {
-    background: var(--accent); color: var(--dark);
+    background: var(--accent); color: #fff;
     padding: 10px 18px; border-radius: 6px; text-decoration: none;
     font-weight: 600; font-size: 14px;
   }
@@ -43,9 +45,9 @@
     text-align: center;
   }
   .hero h1 { font-size: 34px; max-width: 700px; margin: 0 auto 16px; }
-  .hero p.sub { font-size: 18px; color: #d8d4c8; max-width: 600px; margin: 0 auto 30px; }
+  .hero p.sub { font-size: 18px; font-weight: 600; color: #fff; max-width: 600px; margin: 0 auto 30px; }
   .cta-btn {
-    display: inline-block; background: var(--accent); color: var(--dark);
+    display: inline-block; background: var(--accent); color: #fff;
     padding: 16px 32px; border-radius: 8px; text-decoration: none;
     font-weight: 700; font-size: 16px;
   }
@@ -55,7 +57,7 @@
   }
   .hero-stats div { text-align: center; }
   .hero-stats .num { font-size: 28px; font-weight: 700; color: var(--accent); }
-  .hero-stats .label { font-size: 14px; color: #d8d4c8; }
+  .hero-stats .label { font-size: 14px; font-weight: 600; color: #fff; }
 
   /* Sections */
   section { padding: 60px 0; }
@@ -82,9 +84,10 @@
     text-align: center; transition: transform 0.15s;
   }
   .product-card:hover { transform: translateY(-4px); }
-  .product-card .icon { font-size: 34px; margin-bottom: 10px; }
-  .product-card h3 { font-size: 17px; margin-bottom: 6px; }
-  .product-card p { font-size: 14px; color: #666; }
+  .product-card { padding: 0 0 20px; overflow: hidden; }
+  .product-card img { width: 100%; height: 160px; object-fit: cover; display: block; margin-bottom: 14px; }
+  .product-card h3 { font-size: 17px; margin-bottom: 6px; padding: 0 16px; }
+  .product-card p { font-size: 15px; font-weight: 600; color: var(--text); padding: 0 16px; }
 
   /* Why us */
   .why-grid {
@@ -96,7 +99,7 @@
     padding: 20px; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
   }
   .why-card h3 { font-size: 16px; margin-bottom: 8px; }
-  .why-card p { font-size: 14px; color: #555; }
+  .why-card p { font-size: 15px; font-weight: 600; color: var(--text); }
 
   /* Testimonials */
   .testimonials-grid {
@@ -118,21 +121,44 @@
   }
   .step .step-num {
     width: 46px; height: 46px; border-radius: 50%;
-    background: var(--accent); color: var(--dark);
+    background: var(--accent); color: #fff;
     display: flex; align-items: center; justify-content: center;
     font-weight: 700; margin: 0 auto 14px;
   }
   .step h3 { font-size: 15px; margin-bottom: 6px; }
-  .step p { font-size: 13px; color: #666; }
+  .step p { font-size: 15px; font-weight: 600; color: var(--text); }
 
   /* Materials */
   .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-  .materials-list li { list-style: none; background: #fff; border: 1px solid #e5e2da; padding: 16px; border-radius: 8px; font-size: 14px; }
+  .materials-list li { list-style: none; background: #fff; border: 1px solid #e5e2da; padding: 16px; border-radius: 8px; font-size: 15px; font-weight: 600; }
 
   /* FAQ */
   .faq-item { border-bottom: 1px solid #e5e2da; padding: 18px 0; }
   .faq-item h3 { font-size: 16px; margin-bottom: 6px; }
-  .faq-item p { font-size: 14px; color: #555; }
+  .faq-item p { font-size: 15px; font-weight: 600; color: var(--text); }
+
+  /* Calculator */
+  .calc-section { background: var(--bg-light); text-align: center; }
+  .calc-intro { max-width: 500px; margin: -20px auto 30px; font-size: 15px; font-weight: 600; color: var(--text); }
+  .calc-box {
+    max-width: 420px; margin: 0 auto; background: #fff; border-radius: 12px;
+    padding: 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .calc-box label { display: block; font-size: 14px; font-weight: 700; margin: 16px 0 6px; }
+  .calc-box label:first-of-type { margin-top: 0; }
+  .calc-box select, .calc-box input[type="number"] {
+    width: 100%; padding: 12px 14px; border-radius: 6px; border: 1px solid #ddd;
+    font-size: 15px; font-weight: 600; color: var(--text); background: #fff;
+  }
+  .calc-btn {
+    width: 100%; margin-top: 22px; background: var(--dark); color: #fff; border: none;
+    padding: 14px; border-radius: 6px; font-weight: 700; font-size: 15px; cursor: pointer;
+  }
+  .calc-result { margin-top: 26px; text-align: center; border-top: 2px dashed #eee; padding-top: 22px; }
+  .calc-result-label { font-size: 14px; font-weight: 700; color: #888; }
+  .calc-result-price { font-size: 28px; font-weight: 800; color: var(--accent); margin: 8px 0; }
+  .calc-result-note { font-size: 13px; font-weight: 600; color: #888; margin-bottom: 18px; }
+  .calc-cta { display: block; }
 
   /* Order form */
   .order-section { background: var(--dark); color: #fff; text-align: center; }
@@ -141,11 +167,15 @@
     max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;
   }
   .order-form input, .order-form textarea {
-    padding: 12px 14px; border-radius: 6px; border: none; font-size: 14px;
+    padding: 12px 14px; border-radius: 6px; border: none; font-size: 15px; font-weight: 600;
   }
   .order-form button {
-    background: var(--accent); color: var(--dark); border: none;
+    background: var(--accent); color: #fff; border: none;
     padding: 14px; border-radius: 6px; font-weight: 700; font-size: 15px; cursor: pointer;
+  }
+  .back-to-top {
+    display: inline-block; margin-top: 24px; color: #fff; font-weight: 700;
+    font-size: 14px; text-decoration: underline;
   }
 
   /* Footer */
@@ -160,12 +190,12 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 
 <header>
   <div class="container">
     <div class="logo">ШвейПро</div>
-    <a href="#order" class="header-btn">Оставить заявку</a>
+    <a href="#calculator" class="header-btn">Рассчитать стоимость</a>
   </div>
 </header>
 
@@ -173,7 +203,7 @@
   <div class="container">
     <h1>Пошив сумок, рюкзаков и текстильных изделий на заказ для бизнеса</h1>
     <p class="sub">От макета до упакованной партии — полный цикл производства на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.</p>
-    <a href="#order" class="cta-btn">Рассчитать стоимость заказа</a>
+    <a href="#calculator" class="cta-btn">Рассчитать стоимость заказа</a>
     <div class="hero-stats">
       <div><div class="num">от 50 шт</div><div class="label">минимальная партия</div></div>
       <div><div class="num">полный цикл</div><div class="label">от макета до упаковки</div></div>
@@ -207,14 +237,14 @@
   <div class="container">
     <h2>Что мы шьём</h2>
     <div class="products-grid">
-      <div class="product-card"><div class="icon">👜</div><h3>Сумки</h3><p>из кожи, экокожи и плотного текстиля</p></div>
-      <div class="product-card"><div class="icon">🎒</div><h3>Рюкзаки</h3><p>деловые, спортивные, промо-модели</p></div>
-      <div class="product-card"><div class="icon">🛍️</div><h3>Шопперы</h3><p>тканевые и брендированные</p></div>
-      <div class="product-card"><div class="icon">💼</div><h3>Косметички</h3><p>любых форм и размеров</p></div>
-      <div class="product-card"><div class="icon">📱</div><h3>Чехлы</h3><p>для техники и аксессуаров</p></div>
-      <div class="product-card"><div class="icon">🗂️</div><h3>Органайзеры</h3><p>для дома, офиса, путешествий</p></div>
-      <div class="product-card"><div class="icon">🏢</div><h3>Корпоративная продукция</h3><p>подарки и мерч для сотрудников и клиентов</p></div>
-      <div class="product-card"><div class="icon">✂️</div><h3>Индивидуальные изделия</h3><p>по вашему техническому заданию</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1605733513597-a8f8341084e6?w=500&q=80&auto=format&fit=crop" alt="Сумки на заказ" loading="lazy"><h3>Сумки</h3><p>из кожи, экокожи и плотного текстиля</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=500&q=80&auto=format&fit=crop" alt="Рюкзаки на заказ" loading="lazy"><h3>Рюкзаки</h3><p>деловые, спортивные, промо-модели</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&q=80&auto=format&fit=crop" alt="Шопперы на заказ" loading="lazy"><h3>Шопперы</h3><p>тканевые и брендированные</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1585687635785-994bda55c78e?w=500&q=80&auto=format&fit=crop" alt="Косметички на заказ" loading="lazy"><h3>Косметички</h3><p>любых форм и размеров</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1574365569389-a10d488ca3fb?w=500&q=80&auto=format&fit=crop" alt="Чехлы на заказ" loading="lazy"><h3>Чехлы</h3><p>для техники и аксессуаров</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1512206973099-46128b60f85e?w=500&q=80&auto=format&fit=crop" alt="Органайзеры на заказ" loading="lazy"><h3>Органайзеры</h3><p>для дома, офиса, путешествий</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80&auto=format&fit=crop" alt="Корпоративная продукция" loading="lazy"><h3>Корпоративная продукция</h3><p>подарки и мерч для сотрудников и клиентов</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=500&q=80&auto=format&fit=crop" alt="Индивидуальные изделия на заказ" loading="lazy"><h3>Индивидуальные изделия</h3><p>по вашему техническому заданию</p></div>
     </div>
   </div>
 </section>
@@ -255,12 +285,12 @@
   <div class="container">
     <h2>Классика и креатив в одном производстве</h2>
     <div class="products-grid">
-      <div class="product-card"><div class="icon">👝</div><h3>Классическая модель</h3><p>строгая деловая сумка, лаконичный крой</p></div>
-      <div class="product-card"><div class="icon">✨</div><h3>Креативная модель</h3><p>нестандартная форма, яркие акценты, авторский дизайн</p></div>
-      <div class="product-card"><div class="icon">👛</div><h3>Женская косметичка</h3><p>классический вариант на молнии</p></div>
-      <div class="product-card"><div class="icon">🌸</div><h3>Креативная косметичка</h3><p>необычная форма, декоративные детали</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1605733513597-a8f8341084e6?w=500&q=80&auto=format&fit=crop" alt="Классическая модель сумки" loading="lazy"><h3>Классическая модель</h3><p>строгая деловая сумка, лаконичный крой</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1622560480654-d96214fdc887?w=500&q=80&auto=format&fit=crop" alt="Креативная модель рюкзака, яркий цвет" loading="lazy"><h3>Креативная модель</h3><p>нестандартная форма, яркие акценты, авторский дизайн</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1512206973099-46128b60f85e?w=500&q=80&auto=format&fit=crop" alt="Классическая женская косметичка" loading="lazy"><h3>Женская косметичка</h3><p>классический вариант на молнии</p></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1538022890810-8f4000ca9a10?w=500&q=80&auto=format&fit=crop" alt="Креативная косметичка яркого цвета" loading="lazy"><h3>Креативная косметичка</h3><p>необычная форма, декоративные детали</p></div>
     </div>
-    <p style="text-align:center; margin-top:20px; font-size:13px; color:#999;">* здесь позже разместите реальные фото готовых изделий — и классических, и креативных моделей</p>
+    <p style="text-align:center; margin-top:20px; font-size:14px; font-weight:600; color:#7a6a5a;">* фото для примера — при готовности замените на реальные снимки ваших изделий</p>
   </div>
 </section>
 
@@ -335,15 +365,55 @@
   </div>
 </section>
 
+<section class="calc-section" id="calculator">
+  <div class="container">
+    <h2>Рассчитайте стоимость заказа</h2>
+    <p class="calc-intro">Выберите параметры — сразу увидите ориентировочную цену. Ничего оставлять не нужно, просто попробуйте.</p>
+    <div class="calc-box">
+      <label for="calc-type">Что нужно пошить</label>
+      <select id="calc-type">
+        <option value="800">Сумка</option>
+        <option value="1200">Рюкзак</option>
+        <option value="350">Шоппер</option>
+        <option value="400">Косметичка</option>
+        <option value="300">Чехол</option>
+        <option value="500">Органайзер</option>
+        <option value="600">Корпоративная продукция</option>
+      </select>
+
+      <label for="calc-material">Материал</label>
+      <select id="calc-material">
+        <option value="1.0">Текстиль / брезент</option>
+        <option value="1.3">Искусственная кожа (экокожа)</option>
+        <option value="2.2">Натуральная кожа</option>
+        <option value="1.15">Техническая ткань</option>
+      </select>
+
+      <label for="calc-qty">Количество изделий (от 50 шт)</label>
+      <input type="number" id="calc-qty" min="50" value="50">
+
+      <button type="button" class="calc-btn" onclick="calculatePrice()">Рассчитать стоимость</button>
+
+      <div id="calc-result" class="calc-result" style="display:none;">
+        <div class="calc-result-label">Ориентировочная стоимость партии</div>
+        <div class="calc-result-price" id="calc-price-value"></div>
+        <p class="calc-result-note">Это предварительный расчёт. Точная цена зависит от сложности модели и уточняется после согласования образца.</p>
+        <a href="#order" class="cta-btn calc-cta">Отправить заявку на точный расчёт</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="order-section" id="order">
   <div class="container">
-    <h2>Оставить заявку на расчёт стоимости</h2>
+    <h2>Оставить заявку на точный расчёт</h2>
     <form class="order-form">
       <input type="text" placeholder="Ваше имя" required>
       <input type="tel" placeholder="Телефон или Telegram" required>
       <textarea placeholder="Что нужно пошить и в каком количестве" rows="3"></textarea>
       <button type="submit">Отправить заявку</button>
     </form>
+    <a href="#top" class="back-to-top">↑ Вернуться в начало страницы</a>
   </div>
 </section>
 
@@ -353,6 +423,27 @@
     <p>Телефон / Telegram / Email — укажите здесь реальные контакты</p>
   </div>
 </footer>
+
+<script>
+function calculatePrice() {
+  var basePrice = parseFloat(document.getElementById('calc-type').value);
+  var material = parseFloat(document.getElementById('calc-material').value);
+  var qty = parseInt(document.getElementById('calc-qty').value, 10);
+  if (!qty || qty < 50) { qty = 50; document.getElementById('calc-qty').value = 50; }
+
+  var total = basePrice * material * qty;
+  var low = Math.round(total * 0.9 / 100) * 100;
+  var high = Math.round(total * 1.1 / 100) * 100;
+
+  function formatNum(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  document.getElementById('calc-price-value').textContent =
+    formatNum(low) + ' – ' + formatNum(high) + ' ₽';
+  document.getElementById('calc-result').style.display = 'block';
+}
+</script>
 
 </body>
 </html>
