@@ -18,7 +18,8 @@
     color: var(--text);
     line-height: 1.6;
     background: #fff;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 16px;
   }
   .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
   h1, h2, h3 { line-height: 1.25; }
@@ -62,7 +63,7 @@
   /* Sections */
   section { padding: 60px 0; }
   section h2 {
-    font-size: 28px; text-align: center; margin-bottom: 40px;
+    font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 40px;
   }
   .bg-light { background: var(--bg-light); }
 
@@ -71,7 +72,7 @@
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center;
     margin-top: 20px;
   }
-  .about-grid .card { padding: 20px; }
+  .about-grid .card { padding: 20px; font-size: 16px; font-weight: 700; }
   .about-grid .num { font-size: 30px; font-weight: 700; color: var(--accent); }
 
   /* Products */
@@ -84,10 +85,15 @@
     text-align: center; transition: transform 0.15s;
   }
   .product-card:hover { transform: translateY(-4px); }
-  .product-card { padding: 0 0 20px; overflow: hidden; }
-  .product-card img { width: 100%; height: 160px; object-fit: cover; display: block; margin-bottom: 14px; }
-  .product-card h3 { font-size: 17px; margin-bottom: 6px; padding: 0 16px; }
-  .product-card p { font-size: 15px; font-weight: 600; color: var(--text); padding: 0 16px; }
+  .product-card { padding: 0 0 22px; overflow: hidden; }
+  .product-card .img-wrap {
+    width: 100%; height: 190px; background: #faf6f0;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .product-card img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  .product-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; padding: 0 16px; }
+  .product-card p { font-size: 16px; font-weight: 700; color: var(--text); padding: 0 16px; }
 
   /* Why us */
   .why-grid {
@@ -98,8 +104,8 @@
     background: #fff; border-left: 4px solid var(--accent);
     padding: 20px; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
   }
-  .why-card h3 { font-size: 16px; margin-bottom: 8px; }
-  .why-card p { font-size: 15px; font-weight: 600; color: var(--text); }
+  .why-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+  .why-card p { font-size: 16px; font-weight: 700; color: var(--text); }
 
   /* Testimonials */
   .testimonials-grid {
@@ -111,7 +117,7 @@
     padding: 24px;
   }
   .testimonial .stars { color: var(--accent); margin-bottom: 10px; }
-  .testimonial p.quote { font-size: 14px; font-style: italic; margin-bottom: 14px; }
+  .testimonial p.quote { font-size: 15px; font-weight: 600; font-style: italic; margin-bottom: 14px; }
   .testimonial .author { font-size: 13px; font-weight: 600; color: #444; }
 
   /* Process */
@@ -126,20 +132,20 @@
     font-weight: 700; margin: 0 auto 14px;
   }
   .step h3 { font-size: 15px; margin-bottom: 6px; }
-  .step p { font-size: 15px; font-weight: 600; color: var(--text); }
+  .step p { font-size: 16px; font-weight: 700; color: var(--text); }
 
   /* Materials */
   .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-  .materials-list li { list-style: none; background: #fff; border: 1px solid #e5e2da; padding: 16px; border-radius: 8px; font-size: 15px; font-weight: 600; }
+  .materials-list li { list-style: none; background: #fff; border: 1px solid #e5e2da; padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 700; }
 
   /* FAQ */
   .faq-item { border-bottom: 1px solid #e5e2da; padding: 18px 0; }
-  .faq-item h3 { font-size: 16px; margin-bottom: 6px; }
-  .faq-item p { font-size: 15px; font-weight: 600; color: var(--text); }
+  .faq-item h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+  .faq-item p { font-size: 16px; font-weight: 700; color: var(--text); }
 
   /* Calculator */
   .calc-section { background: var(--bg-light); text-align: center; }
-  .calc-intro { max-width: 500px; margin: -20px auto 30px; font-size: 15px; font-weight: 600; color: var(--text); }
+  .calc-intro { max-width: 500px; margin: -20px auto 30px; font-size: 16px; font-weight: 700; color: var(--text); }
   .calc-box {
     max-width: 420px; margin: 0 auto; background: #fff; border-radius: 12px;
     padding: 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
@@ -177,6 +183,19 @@
     display: inline-block; margin-top: 24px; color: #fff; font-weight: 700;
     font-size: 14px; text-decoration: underline;
   }
+
+  /* Contacts */
+  .contacts-row {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 14px;
+    margin: 0 auto 8px;
+  }
+  .contact-item {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12); color: #fff; text-decoration: none;
+    padding: 10px 16px; border-radius: 8px; font-weight: 700; font-size: 15px;
+  }
+  .contact-icon { font-size: 17px; }
+  .contacts-note { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 30px; }
 
   /* Footer */
   footer {
@@ -237,14 +256,14 @@
   <div class="container">
     <h2>Что мы шьём</h2>
     <div class="products-grid">
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1605733513597-a8f8341084e6?w=500&q=80&auto=format&fit=crop" alt="Сумки на заказ" loading="lazy"><h3>Сумки</h3><p>из кожи, экокожи и плотного текстиля</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=500&q=80&auto=format&fit=crop" alt="Рюкзаки на заказ" loading="lazy"><h3>Рюкзаки</h3><p>деловые, спортивные, промо-модели</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&q=80&auto=format&fit=crop" alt="Шопперы на заказ" loading="lazy"><h3>Шопперы</h3><p>тканевые и брендированные</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1585687635785-994bda55c78e?w=500&q=80&auto=format&fit=crop" alt="Косметички на заказ" loading="lazy"><h3>Косметички</h3><p>любых форм и размеров</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1574365569389-a10d488ca3fb?w=500&q=80&auto=format&fit=crop" alt="Чехлы на заказ" loading="lazy"><h3>Чехлы</h3><p>для техники и аксессуаров</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1512206973099-46128b60f85e?w=500&q=80&auto=format&fit=crop" alt="Органайзеры на заказ" loading="lazy"><h3>Органайзеры</h3><p>для дома, офиса, путешествий</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80&auto=format&fit=crop" alt="Корпоративная продукция" loading="lazy"><h3>Корпоративная продукция</h3><p>подарки и мерч для сотрудников и клиентов</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=500&q=80&auto=format&fit=crop" alt="Индивидуальные изделия на заказ" loading="lazy"><h3>Индивидуальные изделия</h3><p>по вашему техническому заданию</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1681747685985-a401c271156c?w=500&q=80&auto=format&fit=crop" alt="Сумки на заказ"></div><h3>Сумки</h3><p>из кожи, экокожи и плотного текстиля</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1526736068954-3d647ef94973?w=500&q=80&auto=format&fit=crop" alt="Рюкзаки на заказ"></div><h3>Рюкзаки</h3><p>деловые, спортивные, промо-модели</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1660484858041-006fd83bcdd1?w=500&q=80&auto=format&fit=crop" alt="Шопперы на заказ"></div><h3>Шопперы</h3><p>тканевые и брендированные</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1591375462104-a0cd5291ab14?w=500&q=80&auto=format&fit=crop" alt="Косметички на заказ"></div><h3>Косметички</h3><p>любых форм и размеров</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1577954732026-2071521acdfb?w=500&q=80&auto=format&fit=crop" alt="Чехлы на заказ"></div><h3>Чехлы</h3><p>для техники и аксессуаров</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1512206991021-e91d9403abfb?w=500&q=80&auto=format&fit=crop" alt="Органайзеры на заказ"></div><h3>Органайзеры</h3><p>для дома, офиса, путешествий</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1760624294582-5341f33f9fa4?w=500&q=80&auto=format&fit=crop" alt="Корпоративная продукция — набор изделий"></div><h3>Корпоративная продукция</h3><p>подарки и мерч для сотрудников и клиентов</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1605733513597-a8f8341084e6?w=500&q=80&auto=format&fit=crop" alt="Индивидуальные изделия на заказ"></div><h3>Индивидуальные изделия</h3><p>по вашему техническому заданию</p></div>
     </div>
   </div>
 </section>
@@ -285,10 +304,10 @@
   <div class="container">
     <h2>Классика и креатив в одном производстве</h2>
     <div class="products-grid">
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1605733513597-a8f8341084e6?w=500&q=80&auto=format&fit=crop" alt="Классическая модель сумки" loading="lazy"><h3>Классическая модель</h3><p>строгая деловая сумка, лаконичный крой</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1622560480654-d96214fdc887?w=500&q=80&auto=format&fit=crop" alt="Креативная модель рюкзака, яркий цвет" loading="lazy"><h3>Креативная модель</h3><p>нестандартная форма, яркие акценты, авторский дизайн</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1512206973099-46128b60f85e?w=500&q=80&auto=format&fit=crop" alt="Классическая женская косметичка" loading="lazy"><h3>Женская косметичка</h3><p>классический вариант на молнии</p></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1538022890810-8f4000ca9a10?w=500&q=80&auto=format&fit=crop" alt="Креативная косметичка яркого цвета" loading="lazy"><h3>Креативная косметичка</h3><p>необычная форма, декоративные детали</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=500&q=80&auto=format&fit=crop" alt="Классическая модель сумки"></div><h3>Классическая модель</h3><p>строгая деловая сумка, лаконичный крой</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1761646238225-6aa73c578344?w=500&q=80&auto=format&fit=crop" alt="Креативная модель — необычная скульптурная форма"></div><h3>Креативная модель</h3><p>нестандартная форма, яркие акценты, авторский дизайн</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1538022890810-8f4000ca9a10?w=500&q=80&auto=format&fit=crop" alt="Классическая женская косметичка"></div><h3>Женская косметичка</h3><p>классический вариант на молнии</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1671272980555-11236fd5c8c5?w=500&q=80&auto=format&fit=crop" alt="Креативная косметичка яркого цвета"></div><h3>Креативная косметичка</h3><p>необычная форма, декоративные детали</p></div>
     </div>
     <p style="text-align:center; margin-top:20px; font-size:14px; font-weight:600; color:#7a6a5a;">* фото для примера — при готовности замените на реальные снимки ваших изделий</p>
   </div>
@@ -407,6 +426,27 @@
 <section class="order-section" id="order">
   <div class="container">
     <h2>Оставить заявку на точный расчёт</h2>
+
+    <div class="contacts-row">
+      <a href="tel:+79991234567" class="contact-item">
+        <span class="contact-icon">📞</span>
+        <span>+7 (999) 123-45-67</span>
+      </a>
+      <a href="mailto:zakaz@shveypro.ru" class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <span>zakaz@shveypro.ru</span>
+      </a>
+      <a href="https://t.me/shveypro" class="contact-item">
+        <span class="contact-icon">💬</span>
+        <span>@shveypro в Telegram</span>
+      </a>
+      <a href="https://wa.me/79991234567" class="contact-item">
+        <span class="contact-icon">🟢</span>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+    <p class="contacts-note">* контакты примерные — замените на реальные перед публикацией</p>
+
     <form class="order-form">
       <input type="text" placeholder="Ваше имя" required>
       <input type="tel" placeholder="Телефон или Telegram" required>
@@ -420,7 +460,7 @@
 <footer>
   <div class="container">
     <p>ШвейПро — пошив изделий на заказ для бизнеса</p>
-    <p>Телефон / Telegram / Email — укажите здесь реальные контакты</p>
+    <p>+7 (999) 123-45-67 · zakaz@shveypro.ru · @shveypro в Telegram</p>
   </div>
 </footer>
 
