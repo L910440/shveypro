@@ -6,22 +6,22 @@
 <title>ШвейПро — пошив сумок, рюкзаков и текстильных изделий на заказ для бизнеса</title>
 <style>
   :root {
-    --dark: #E8630A;
-    --dark-deep: #C4520A;
-    --accent: #0F8A7A;
-    --bg-light: #FFF3E6;
-    --text: #3A2A1F;
+    --dark: #24483A;
+    --accent: #C86B4A;
+    --bg-light: #E9E0D2;
+    --bg-milk: #F7F3EA;
+    --text: #252525;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
     color: var(--text);
     line-height: 1.6;
-    background: #fff;
+    background: var(--bg-milk);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 17px;
   }
-  .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
   h1, h2, h3 { line-height: 1.25; }
   a { color: inherit; }
 
@@ -42,28 +42,63 @@
   /* Hero */
   .hero {
     background: var(--dark); color: #fff;
-    padding: 60px 0 80px;
-    text-align: center;
+    padding: 60px 0 70px;
+    overflow: hidden;
   }
-  .hero h1 { font-size: 34px; max-width: 700px; margin: 0 auto 16px; }
-  .hero p.sub { font-size: 18px; font-weight: 600; color: #fff; max-width: 600px; margin: 0 auto 30px; }
+  .hero .container {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;
+  }
+  .hero-text { text-align: left; }
+  .hero h1 { font-size: 42px; font-weight: 800; margin: 0 0 18px; }
+  .hero p.sub { font-size: 20px; font-weight: 600; color: #fff; margin: 0 0 30px; max-width: 520px; }
   .cta-btn {
     display: inline-block; background: var(--accent); color: #fff;
-    padding: 16px 32px; border-radius: 8px; text-decoration: none;
-    font-weight: 700; font-size: 16px;
+    padding: 18px 36px; border-radius: 8px; text-decoration: none;
+    font-weight: 800; font-size: 18px;
   }
   .hero-stats {
-    display: flex; justify-content: center; gap: 40px;
-    margin-top: 50px; flex-wrap: wrap;
+    display: flex; justify-content: flex-start; gap: 34px;
+    margin-top: 46px; flex-wrap: wrap;
   }
-  .hero-stats div { text-align: center; }
-  .hero-stats .num { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .hero-stats div { text-align: left; }
+  .hero-stats .num { font-size: 24px; font-weight: 800; color: var(--accent); }
   .hero-stats .label { font-size: 14px; font-weight: 600; color: #fff; }
 
+  /* Hero product collage */
+  .hero-collage {
+    position: relative; height: 380px;
+  }
+  .hero-collage::before {
+    content: ""; position: absolute; inset: -20px 10px 10px -20px;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 24px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 24px);
+    border: 1px dashed rgba(255,255,255,0.25);
+    border-radius: 16px;
+  }
+  .hero-collage img {
+    position: absolute; object-fit: cover; border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35); border: 4px solid #fff;
+  }
+  .hero-collage .img1 { width: 62%; height: 62%; top: 4%; left: 30%; z-index: 3; }
+  .hero-collage .img2 { width: 48%; height: 48%; top: 0; left: 0; z-index: 2; }
+  .hero-collage .img3 { width: 38%; height: 38%; bottom: 2%; left: 8%; z-index: 4; }
+  .hero-collage .img4 { width: 40%; height: 40%; bottom: -2%; right: 2%; z-index: 1; }
+
+  @media (max-width: 860px) {
+    .hero .container { grid-template-columns: 1fr; }
+    .hero-text { text-align: center; }
+    .hero p.sub { margin-left: auto; margin-right: auto; }
+    .hero-stats { justify-content: center; }
+    .hero-stats div { text-align: center; }
+    .hero-collage { height: 300px; margin-top: 20px; }
+  }
+
   /* Sections */
-  section { padding: 60px 0; }
+  section { padding: 64px 0; }
   section h2 {
-    font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 40px;
+    font-size: 32px; font-weight: 800; text-align: center; margin-bottom: 40px;
+    color: var(--dark);
   }
   .bg-light { background: var(--bg-light); }
 
@@ -116,9 +151,10 @@
     background: #fff; border: 1px solid #e5e2da; border-radius: 10px;
     padding: 24px;
   }
-  .testimonial .stars { color: var(--accent); margin-bottom: 10px; }
-  .testimonial p.quote { font-size: 15px; font-weight: 600; font-style: italic; margin-bottom: 14px; }
-  .testimonial .author { font-size: 13px; font-weight: 600; color: #444; }
+  .testimonial .stars { color: var(--accent); margin-bottom: 10px; font-size: 18px; }
+  .testimonial p.quote { font-size: 16px; font-weight: 700; font-style: italic; margin-bottom: 16px; }
+  .testimonial .author { font-size: 15px; font-weight: 800; color: var(--dark); }
+  .testimonial .author span { display: block; font-size: 13px; font-weight: 600; color: #888; margin-top: 2px; }
 
   /* Process */
   .steps {
@@ -135,8 +171,11 @@
   .step p { font-size: 16px; font-weight: 700; color: var(--text); }
 
   /* Materials */
-  .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-  .materials-list li { list-style: none; background: #fff; border: 1px solid #e5e2da; padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 700; }
+  .materials-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .materials-group { background: #fff; border-radius: 10px; padding: 22px; }
+  .materials-group h3 { font-size: 19px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .materials-group ul { padding-left: 20px; }
+  .materials-group li { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
 
   /* FAQ */
   .faq-item { border-bottom: 1px solid #e5e2da; padding: 18px 0; }
@@ -145,20 +184,28 @@
 
   /* Calculator */
   .calc-section { background: var(--bg-light); text-align: center; }
-  .calc-intro { max-width: 500px; margin: -20px auto 30px; font-size: 16px; font-weight: 700; color: var(--text); }
+  .calc-section h2 { font-size: 34px; }
+  .calc-intro { max-width: 500px; margin: -16px auto 30px; font-size: 18px; font-weight: 700; color: var(--dark); }
   .calc-box {
-    max-width: 420px; margin: 0 auto; background: #fff; border-radius: 12px;
-    padding: 30px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    max-width: 440px; margin: 0 auto; background: #fff; border-radius: 12px;
+    padding: 32px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   }
-  .calc-box label { display: block; font-size: 14px; font-weight: 700; margin: 16px 0 6px; }
+  .calc-box label { display: block; font-size: 15px; font-weight: 800; margin: 18px 0 8px; color: var(--dark); }
   .calc-box label:first-of-type { margin-top: 0; }
   .calc-box select, .calc-box input[type="number"] {
-    width: 100%; padding: 12px 14px; border-radius: 6px; border: 1px solid #ddd;
-    font-size: 15px; font-weight: 600; color: var(--text); background: #fff;
+    width: 100%; padding: 13px 14px; border-radius: 6px; border: 1.5px solid #ddd;
+    font-size: 16px; font-weight: 700; color: var(--text); background: #fff;
   }
+  .qty-stepper { display: flex; align-items: stretch; gap: 8px; }
+  .qty-btn {
+    width: 52px; flex-shrink: 0; border: 1.5px solid var(--dark); background: var(--dark);
+    color: #fff; font-size: 22px; font-weight: 800; border-radius: 6px; cursor: pointer;
+  }
+  .qty-stepper input[type="number"] { text-align: center; }
+  .qty-hint { font-size: 13px; font-weight: 600; color: #888; margin-top: 6px; }
   .calc-btn {
-    width: 100%; margin-top: 22px; background: var(--dark); color: #fff; border: none;
-    padding: 14px; border-radius: 6px; font-weight: 700; font-size: 15px; cursor: pointer;
+    width: 100%; margin-top: 22px; background: var(--accent); color: #fff; border: none;
+    padding: 16px; border-radius: 6px; font-weight: 800; font-size: 17px; cursor: pointer;
   }
   .calc-result { margin-top: 26px; text-align: center; border-top: 2px dashed #eee; padding-top: 22px; }
   .calc-result-label { font-size: 14px; font-weight: 700; color: #888; }
@@ -173,15 +220,25 @@
     max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;
   }
   .order-form input, .order-form textarea {
-    padding: 12px 14px; border-radius: 6px; border: none; font-size: 15px; font-weight: 600;
+    padding: 13px 14px; border-radius: 6px; border: none; font-size: 16px; font-weight: 700;
+  }
+  .order-form label.file-label {
+    background: rgba(255,255,255,0.1); border: 1.5px dashed rgba(255,255,255,0.5);
+    border-radius: 6px; padding: 13px 14px; font-size: 15px; font-weight: 700;
+    cursor: pointer; text-align: left;
   }
   .order-form button {
     background: var(--accent); color: #fff; border: none;
-    padding: 14px; border-radius: 6px; font-weight: 700; font-size: 15px; cursor: pointer;
+    padding: 15px; border-radius: 6px; font-weight: 800; font-size: 17px; cursor: pointer;
+  }
+  .order-success {
+    display: none; background: #fff; color: var(--dark); border-radius: 8px;
+    padding: 20px; font-weight: 800; font-size: 16px; max-width: 420px; margin: 0 auto;
   }
   .back-to-top {
-    display: inline-block; margin-top: 24px; color: #fff; font-weight: 700;
-    font-size: 14px; text-decoration: underline;
+    display: inline-block; margin-top: 28px; color: var(--dark); font-weight: 800;
+    font-size: 16px; text-decoration: none; background: var(--bg-milk);
+    padding: 12px 22px; border-radius: 8px;
   }
 
   /* Contacts */
@@ -191,11 +248,12 @@
   }
   .contact-item {
     display: flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.12); color: #fff; text-decoration: none;
-    padding: 10px 16px; border-radius: 8px; font-weight: 700; font-size: 15px;
+    background: var(--bg-milk); color: var(--dark); text-decoration: none;
+    padding: 12px 18px; border-radius: 8px; font-weight: 800; font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
-  .contact-icon { font-size: 17px; }
-  .contacts-note { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+  .contact-icon { font-size: 18px; }
+  .contacts-note { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 30px; }
 
   /* Footer */
   footer {
@@ -203,9 +261,15 @@
   }
 
   @media (max-width: 720px) {
+    body { font-size: 16px; }
     .about-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
-    .hero h1 { font-size: 26px; }
+    .hero h1 { font-size: 30px; }
+    .hero p.sub { font-size: 18px; }
+    section h2 { font-size: 26px; }
+    .calc-section h2 { font-size: 28px; }
+    .materials-groups { grid-template-columns: 1fr; }
+    .contact-item { font-size: 15px; padding: 10px 14px; }
   }
 </style>
 </head>
@@ -220,13 +284,21 @@
 
 <section class="hero">
   <div class="container">
-    <h1>Пошив сумок, рюкзаков и текстильных изделий на заказ для бизнеса</h1>
-    <p class="sub">От макета до упакованной партии — полный цикл производства на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.</p>
-    <a href="#calculator" class="cta-btn">Рассчитать стоимость заказа</a>
-    <div class="hero-stats">
-      <div><div class="num">от 50 шт</div><div class="label">минимальная партия</div></div>
-      <div><div class="num">полный цикл</div><div class="label">от макета до упаковки</div></div>
-      <div><div class="num">образец</div><div class="label">перед запуском партии</div></div>
+    <div class="hero-text">
+      <h1>Пошив сумок, рюкзаков и текстильных изделий на заказ для бизнеса</h1>
+      <p class="sub">От макета до упакованной партии — полный цикл производства на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.</p>
+      <a href="#calculator" class="cta-btn">Рассчитать стоимость заказа</a>
+      <div class="hero-stats">
+        <div><div class="num">от 50 шт</div><div class="label">минимальная партия</div></div>
+        <div><div class="num">полный цикл</div><div class="label">от макета до упаковки</div></div>
+        <div><div class="num">образец</div><div class="label">перед запуском партии</div></div>
+      </div>
+    </div>
+    <div class="hero-collage">
+      <img class="img1" src="https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=500&q=80&auto=format&fit=crop" alt="Коньячная кожаная сумка">
+      <img class="img2" src="https://images.unsplash.com/photo-1786025083224-220e39cb1e22?w=500&q=80&auto=format&fit=crop" alt="Зелёный рюкзак">
+      <img class="img3" src="https://images.unsplash.com/photo-1688296524524-9ae7601f0877?w=500&q=80&auto=format&fit=crop" alt="Терракотовая косметичка">
+      <img class="img4" src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&q=80&auto=format&fit=crop" alt="Тканевый шоппер">
     </div>
   </div>
 </section>
@@ -281,16 +353,16 @@
         <p>Присылаете фото, эскиз, образец или готовые лекала — даже без технической документации разберёмся и предложим решение.</p>
       </div>
       <div class="why-card">
-        <h3>📦 Маленькие партии без переплаты</h3>
-        <p>Не обязательно заказывать сразу тысячу штук — можем скорректировать модель без резкого удорожания.</p>
+        <h3>📦 Небольшие партии — от 50 изделий</h3>
+        <p>Не обязательно сразу заказывать тысячи штук — можно начать с небольшой партии.</p>
       </div>
       <div class="why-card">
         <h3>🔍 Сначала образец, потом партия</h3>
         <p>Вы видите и утверждаете готовое изделие до запуска основного производства.</p>
       </div>
       <div class="why-card">
-        <h3>✅ Контроль качества на каждом этапе</h3>
-        <p>Проверяем швы, фурнитуру и материалы на всех стадиях — не только на выходе.</p>
+        <h3>✅ Контроль качества</h3>
+        <p>Проверяем качество материалов и фурнитуры перед началом производства, а качество пошива контролируем на каждом этапе изготовления изделия — не только при финальной проверке.</p>
       </div>
       <div class="why-card">
         <h3>🎨 Классика и креатив</h3>
@@ -320,17 +392,17 @@
       <div class="testimonial">
         <div class="stars">★★★★★</div>
         <p class="quote">«Заказывали партию корпоративных рюкзаков — сделали быстро, качество швов отличное, все изделия одинаковые, без брака».</p>
-        <div class="author">— пример отзыва, замените на реальный</div>
+        <div class="author">Марина К.<span>пример отзыва — замените на реальный, имя/компанию</span></div>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
         <p class="quote">«Понравилось, что сначала прислали образец на согласование — ошибок в итоговой партии не было».</p>
-        <div class="author">— пример отзыва, замените на реальный</div>
+        <div class="author">Дмитрий, ООО «Пример»<span>пример отзыва — замените на реальный, имя/компанию</span></div>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
         <p class="quote">«Работаем уже второй год, всегда укладываются в сроки, материалы именно те, что обсуждали».</p>
-        <div class="author">— пример отзыва, замените на реальный</div>
+        <div class="author">Анна В.<span>пример отзыва — замените на реальный, имя/компанию</span></div>
       </div>
     </div>
   </div>
@@ -342,7 +414,7 @@
     <div class="steps">
       <div class="step"><div class="step-num">1</div><h3>Заявка</h3><p>Присылаете фото, эскиз или ТЗ — обсуждаем детали и материалы</p></div>
       <div class="step"><div class="step-num">2</div><h3>Образец</h3><p>Шьём один экземпляр на согласование</p></div>
-      <div class="step"><div class="step-num">3</div><h3>Партия</h3><p>После утверждения запускаем производство всей партии</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Производство</h3><p>После утверждения запускаем производство всей партии</p></div>
       <div class="step"><div class="step-num">4</div><h3>Упаковка и отправка</h3><p>Упаковываем и передаём готовую партию</p></div>
     </div>
   </div>
@@ -351,14 +423,24 @@
 <section class="bg-light">
   <div class="container">
     <h2>С какими материалами работаем</h2>
-    <ul class="materials-list">
-      <li>Натуральная кожа</li>
-      <li>Искусственная кожа (экокожа)</li>
-      <li>Плотный текстиль и брезент</li>
-      <li>Технические ткани (влагостойкие, износостойкие)</li>
-      <li>Подкладочные и укрепляющие материалы</li>
-      <li>Фурнитура: молнии, карабины, стропы</li>
-    </ul>
+    <div class="materials-groups">
+      <div class="materials-group">
+        <h3>Кожа</h3>
+        <ul><li>Натуральная</li><li>Искусственная (экокожа)</li></ul>
+      </div>
+      <div class="materials-group">
+        <h3>Текстиль</h3>
+        <ul><li>Плотный текстиль</li><li>Брезент</li><li>Технические ткани</li><li>Влагостойкие</li><li>Износостойкие</li></ul>
+      </div>
+      <div class="materials-group">
+        <h3>Дополнительные материалы</h3>
+        <ul><li>Подкладочные</li><li>Укрепляющие</li></ul>
+      </div>
+      <div class="materials-group">
+        <h3>Фурнитура</h3>
+        <ul><li>Молнии</li><li>Карабины</li><li>Стропы</li></ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -367,19 +449,19 @@
     <h2>Частые вопросы</h2>
     <div class="faq-item">
       <h3>Какой минимальный тираж?</h3>
-      <p>От 50 изделий на партию. Возможны исключения — обсуждается индивидуально.</p>
+      <p>От 50 изделий в партии. Для отдельных моделей возможны исключения — условия обсуждаем индивидуально.</p>
     </div>
     <div class="faq-item">
-      <h3>Можно заказать по одному фото, без лекал?</h3>
-      <p>Да, разработаем лекала сами на основе фото, эскиза или образца изделия.</p>
+      <h3>Можно ли заказать изделие только по фотографии?</h3>
+      <p>Да. Разработаем лекала самостоятельно на основе фотографии, эскиза или образца.</p>
     </div>
     <div class="faq-item">
       <h3>Сколько занимает производство партии?</h3>
-      <p>Зависит от объёма и сложности изделия — точный срок называем после согласования образца.</p>
+      <p>Срок зависит от объёма и сложности изделия. Точный срок согласовываем после утверждения образца.</p>
     </div>
     <div class="faq-item">
-      <h3>Можно вносить изменения после старта?</h3>
-      <p>До запуска партии — да, на этапе согласования образца. После старта партии изменения обсуждаются отдельно.</p>
+      <h3>Можно ли внести изменения после старта производства?</h3>
+      <p>Изменения можно внести на этапе согласования образца. После запуска партии возможность изменений обсуждается отдельно.</p>
     </div>
   </div>
 </section>
@@ -387,7 +469,7 @@
 <section class="calc-section" id="calculator">
   <div class="container">
     <h2>Рассчитайте стоимость заказа</h2>
-    <p class="calc-intro">Выберите параметры — сразу увидите ориентировочную цену. Ничего оставлять не нужно, просто попробуйте.</p>
+    <p class="calc-intro">Выберите параметры</p>
     <div class="calc-box">
       <label for="calc-type">Что нужно пошить</label>
       <select id="calc-type">
@@ -409,7 +491,12 @@
       </select>
 
       <label for="calc-qty">Количество изделий (от 50 шт)</label>
-      <input type="number" id="calc-qty" min="50" value="50">
+      <div class="qty-stepper">
+        <button type="button" class="qty-btn" onclick="changeQty(-10)" aria-label="Уменьшить количество">−</button>
+        <input type="number" id="calc-qty" min="50" value="50">
+        <button type="button" class="qty-btn" onclick="changeQty(10)" aria-label="Увеличить количество">+</button>
+      </div>
+      <p class="qty-hint">− уменьшает количество, + увеличивает. Можно ввести число вручную.</p>
 
       <button type="button" class="calc-btn" onclick="calculatePrice()">Рассчитать стоимость</button>
 
@@ -425,7 +512,7 @@
 
 <section class="order-section" id="order">
   <div class="container">
-    <h2>Оставить заявку на точный расчёт</h2>
+    <h2>Получить точный расчёт</h2>
 
     <div class="contacts-row">
       <a href="tel:+79991234567" class="contact-item">
@@ -447,13 +534,19 @@
     </div>
     <p class="contacts-note">* контакты примерные — замените на реальные перед публикацией</p>
 
-    <form class="order-form">
+    <form class="order-form" id="order-form" onsubmit="return submitOrderForm(event)">
       <input type="text" placeholder="Ваше имя" required>
       <input type="tel" placeholder="Телефон или Telegram" required>
-      <textarea placeholder="Что нужно пошить и в каком количестве" rows="3"></textarea>
-      <button type="submit">Отправить заявку</button>
+      <input type="text" placeholder="Что нужно пошить" required>
+      <input type="number" placeholder="Количество (от 50 шт)" min="50">
+      <label class="file-label">
+        📎 Прикрепить фото / эскиз / образец
+        <input type="file" style="display:none">
+      </label>
+      <button type="submit">Получить точный расчёт</button>
     </form>
-    <a href="#top" class="back-to-top">↑ Вернуться в начало страницы</a>
+    <div class="order-success" id="order-success">✅ Спасибо! Заявка отправлена. Мы свяжемся с вами для уточнения деталей.</div>
+    <a href="#top" class="back-to-top">↑ Вернуться к началу</a>
   </div>
 </section>
 
@@ -465,6 +558,13 @@
 </footer>
 
 <script>
+function changeQty(delta) {
+  var input = document.getElementById('calc-qty');
+  var val = parseInt(input.value, 10) || 50;
+  val += delta;
+  if (val < 50) val = 50;
+  input.value = val;
+}
 function calculatePrice() {
   var basePrice = parseFloat(document.getElementById('calc-type').value);
   var material = parseFloat(document.getElementById('calc-material').value);
@@ -482,6 +582,13 @@ function calculatePrice() {
   document.getElementById('calc-price-value').textContent =
     formatNum(low) + ' – ' + formatNum(high) + ' ₽';
   document.getElementById('calc-result').style.display = 'block';
+}
+
+function submitOrderForm(e) {
+  e.preventDefault();
+  document.getElementById('order-form').style.display = 'none';
+  document.getElementById('order-success').style.display = 'block';
+  return false;
 }
 </script>
 
