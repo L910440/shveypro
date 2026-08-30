@@ -11,6 +11,7 @@
     --dark-2: #1a3529;
     --accent: #C86B4A;
     --accent-2: #B25A3B;
+    --accent-3: #97452B;
     --bg-light: #E9E0D2;
     --bg-milk: #F7F3EA;
     --text: #2B2B27;
@@ -41,7 +42,7 @@
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
     outline: 2.5px solid var(--accent); outline-offset: 2px;
   }
-  ::selection { background: var(--accent); color: #fff; }
+  ::selection { background: var(--accent-2); color: #fff; }
 
   /* Header */
   header {
@@ -52,11 +53,11 @@
   header .container { display: flex; justify-content: space-between; align-items: center; }
   .logo { font-family: var(--font-display); font-weight: 600; font-style: italic; font-size: 22px; letter-spacing: 0.3px; }
   .header-btn {
-    background: var(--accent); color: #fff;
+    background: var(--accent-2); color: #fff;
     padding: 11px 20px; border-radius: 30px; text-decoration: none;
     font-weight: 600; font-size: 14px; transition: background 0.2s ease;
   }
-  .header-btn:hover { background: var(--accent-2); }
+  .header-btn:hover { background: var(--accent-3); }
 
   /* Hero */
   .hero {
@@ -79,11 +80,11 @@
   .hero h1 em { font-style: italic; color: var(--accent-2); }
   .hero p.sub { font-family: var(--font-body); font-size: 19px; font-weight: 400; color: var(--text-muted); margin: 0 0 32px; max-width: 480px; line-height: 1.6; }
   .cta-btn {
-    display: inline-block; background: var(--accent); color: #fff;
+    display: inline-block; background: var(--accent-2); color: #fff;
     padding: 17px 34px; border-radius: 30px; text-decoration: none;
     font-family: var(--font-body); font-weight: 700; font-size: 16px; transition: background 0.2s ease, transform 0.2s ease;
   }
-  .cta-btn:hover { background: var(--accent-2); transform: translateY(-2px); }
+  .cta-btn:hover { background: var(--accent-3); transform: translateY(-2px); }
   .hero-stats {
     display: flex; justify-content: flex-start; gap: 40px;
     margin-top: 48px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid var(--border);
@@ -165,19 +166,19 @@
     gap: 20px;
   }
   .product-card {
-    border: 1px solid #e5e2da; border-radius: 10px; padding: 24px;
-    text-align: center; transition: transform 0.15s;
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
+    text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .product-card:hover { transform: translateY(-4px); }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(36,72,58,0.1); }
   .product-card { padding: 0 0 22px; overflow: hidden; }
   .product-card .img-wrap {
-    width: 100%; height: 190px; background: #faf6f0;
+    width: 100%; height: 190px; background: var(--bg-light);
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 14px;
   }
   .product-card img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-  .product-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; padding: 0 16px; }
-  .product-card p { font-size: 16px; font-weight: 700; color: var(--text); padding: 0 16px; }
+  .product-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; padding: 0 16px; }
+  .product-card p { font-size: 15px; font-weight: 400; color: var(--text-muted); padding: 0 16px; }
 
   /* Why us */
   .why-grid {
@@ -185,11 +186,49 @@
     gap: 24px;
   }
   .why-card {
-    background: #fff; border-left: 4px solid var(--accent);
-    padding: 20px; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    background: var(--card-bg); padding: 26px 24px; border-radius: var(--radius);
+    box-shadow: 0 2px 14px rgba(36,72,58,0.06); border: 1px solid var(--border);
   }
-  .why-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
-  .why-card p { font-size: 16px; font-weight: 700; color: var(--text); }
+  .why-card .why-num {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--bg-light);
+    color: var(--accent-2); font-family: var(--font-display); font-style: italic; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; margin-bottom: 14px;
+  }
+  .why-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .why-card p { font-size: 15px; font-weight: 400; color: var(--text-muted); line-height: 1.55; }
+
+  /* Products in life */
+  .life-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .life-card { border-radius: var(--radius); overflow: hidden; background: var(--card-bg); box-shadow: 0 4px 18px rgba(36,72,58,0.08); }
+  .life-card .life-photo { width: 100%; aspect-ratio: 4/5; overflow: hidden; }
+  .life-card .life-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .life-card:hover .life-photo img { transform: scale(1.04); }
+  .life-card .life-caption { padding: 18px 20px 22px; }
+  .life-card .life-caption h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+  .life-card .life-caption p { font-size: 14px; color: var(--text-muted); }
+
+  /* Classic / Creative editorial blocks */
+  .direction-block {
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center;
+    margin-bottom: 56px;
+  }
+  .direction-block:last-child { margin-bottom: 0; }
+  .direction-block.reverse { grid-template-columns: 1.1fr 1fr; }
+  .direction-block.reverse .direction-photo { order: 2; }
+  .direction-photo { border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 30px rgba(36,72,58,0.14); }
+  .direction-photo img { width: 100%; display: block; object-fit: cover; }
+  .direction-copy .direction-tag {
+    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-2); background: var(--bg-light); padding: 5px 12px; border-radius: 20px; margin-bottom: 14px;
+  }
+  .direction-copy h3 { font-size: 26px; font-weight: 600; margin-bottom: 12px; }
+  .direction-copy p { font-size: 16px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+
+  @media (max-width: 860px) {
+    .life-grid { grid-template-columns: 1fr; }
+    .direction-block, .direction-block.reverse { grid-template-columns: 1fr; gap: 22px; }
+    .direction-block.reverse .direction-photo { order: 0; }
+  }
 
   /* Testimonials */
   .testimonials-grid {
@@ -197,13 +236,13 @@
     gap: 24px;
   }
   .testimonial {
-    background: #fff; border: 1px solid #e5e2da; border-radius: 10px;
-    padding: 24px;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 26px;
   }
   .testimonial .stars { color: var(--accent); margin-bottom: 10px; font-size: 18px; }
-  .testimonial p.quote { font-size: 16px; font-weight: 700; font-style: italic; margin-bottom: 16px; }
-  .testimonial .author { font-size: 15px; font-weight: 800; color: var(--dark); }
-  .testimonial .author span { display: block; font-size: 13px; font-weight: 600; color: #888; margin-top: 2px; }
+  .testimonial p.quote { font-size: 16px; font-weight: 400; font-style: italic; color: var(--text); margin-bottom: 18px; line-height: 1.55; }
+  .testimonial .author { font-size: 15px; font-weight: 600; color: var(--dark); }
+  .testimonial .author span { display: block; font-size: 13px; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
 
   /* Process */
   .steps {
@@ -212,24 +251,32 @@
   }
   .step .step-num {
     width: 46px; height: 46px; border-radius: 50%;
-    background: var(--accent); color: #fff;
+    background: var(--accent-2); color: #fff;
     display: flex; align-items: center; justify-content: center;
     font-weight: 700; margin: 0 auto 14px;
   }
-  .step h3 { font-size: 15px; margin-bottom: 6px; }
-  .step p { font-size: 16px; font-weight: 700; color: var(--text); }
+  .step h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .step p { font-size: 15px; font-weight: 400; color: var(--text-muted); }
 
   /* Materials */
   .materials-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-  .materials-group { background: #fff; border-radius: 10px; padding: 22px; }
-  .materials-group h3 { font-size: 19px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .materials-group { background: var(--card-bg); border-radius: var(--radius); padding: 24px; border: 1px solid var(--border); }
+  .materials-group h3 { font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 12px; }
   .materials-group ul { padding-left: 20px; }
-  .materials-group li { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .materials-group li { font-size: 15px; font-weight: 400; color: var(--text-muted); margin-bottom: 6px; }
 
   /* FAQ */
-  .faq-item { border-bottom: 1px solid #e5e2da; padding: 18px 0; }
-  .faq-item h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
-  .faq-item p { font-size: 16px; font-weight: 700; color: var(--text); }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+  .faq-item summary { cursor: pointer; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary h3 {
+    font-size: 17px; font-weight: 600; display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-item summary h3::after {
+    content: "+"; color: var(--accent); font-family: var(--font-body); font-weight: 400; font-size: 24px; margin-left: 12px; transition: transform 0.2s ease;
+  }
+  .faq-item[open] summary h3::after { content: "\2212"; }
+  .faq-item p { font-size: 15px; font-weight: 400; color: var(--text-muted); margin-top: 10px; }
 
   /* Calculator */
   .calc-section { background: var(--bg-light); text-align: center; }
@@ -253,7 +300,7 @@
   .qty-stepper input[type="number"] { text-align: center; }
   .qty-hint { font-size: 13px; font-weight: 600; color: #888; margin-top: 6px; }
   .calc-btn {
-    width: 100%; margin-top: 22px; background: var(--accent); color: #fff; border: none;
+    width: 100%; margin-top: 22px; background: var(--accent-2); color: #fff; border: none;
     padding: 16px; border-radius: 6px; font-weight: 800; font-size: 17px; cursor: pointer;
   }
   .calc-result { margin-top: 26px; text-align: center; border-top: 2px dashed #eee; padding-top: 22px; }
@@ -277,7 +324,7 @@
     cursor: pointer; text-align: left;
   }
   .order-form button {
-    background: var(--accent); color: #fff; border: none;
+    background: var(--accent-2); color: #fff; border: none;
     padding: 15px; border-radius: 6px; font-weight: 800; font-size: 17px; cursor: pointer;
   }
   .order-success {
@@ -392,30 +439,37 @@
 
 <section>
   <div class="container">
-    <h2>Почему выбирают нас</h2>
+    <span class="section-kicker">Почему выбирают нас</span>
+    <h2>Полный цикл, без компромиссов</h2>
     <div class="why-grid">
       <div class="why-card">
-        <h3>🏭 Полный цикл под одной крышей</h3>
+        <div class="why-num">01</div>
+        <h3>Полный цикл под одной крышей</h3>
         <p>От разработки макета до упаковки готовой партии — не нужно искать разных подрядчиков.</p>
       </div>
       <div class="why-card">
-        <h3>📐 Работаем с любым форматом ТЗ</h3>
+        <div class="why-num">02</div>
+        <h3>Работаем с любым форматом ТЗ</h3>
         <p>Присылаете фото, эскиз, образец или готовые лекала — даже без технической документации разберёмся и предложим решение.</p>
       </div>
       <div class="why-card">
-        <h3>📦 Небольшие партии — от 50 изделий</h3>
+        <div class="why-num">03</div>
+        <h3>Небольшие партии — от 50 изделий</h3>
         <p>Не обязательно сразу заказывать тысячи штук — можно начать с небольшой партии.</p>
       </div>
       <div class="why-card">
-        <h3>🔍 Сначала образец, потом партия</h3>
+        <div class="why-num">04</div>
+        <h3>Сначала образец, потом партия</h3>
         <p>Вы видите и утверждаете готовое изделие до запуска основного производства.</p>
       </div>
       <div class="why-card">
-        <h3>✅ Контроль качества</h3>
-        <p>Проверяем качество материалов и фурнитуры перед началом производства, а качество пошива контролируем на каждом этапе изготовления изделия — не только при финальной проверке.</p>
+        <div class="why-num">05</div>
+        <h3>Контроль качества</h3>
+        <p>Проверяем качество материалов и фурнитуры перед началом производства, а качество пошива контролируем на каждом этапе изготовления — не только при финальной проверке.</p>
       </div>
       <div class="why-card">
-        <h3>🎨 Классика и креатив</h3>
+        <div class="why-num">06</div>
+        <h3>Классика и креатив</h3>
         <p>Шьём и строгие деловые модели, и нестандартные, творческие идеи — воплощаем ваш дизайн, а не только типовые образцы.</p>
       </div>
     </div>
@@ -424,14 +478,51 @@
 
 <section class="bg-light">
   <div class="container">
-    <h2>Классика и креатив в одном производстве</h2>
-    <div class="products-grid">
-      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=500&q=80&auto=format&fit=crop" alt="Классическая модель сумки"></div><h3>Классическая модель</h3><p>строгая деловая сумка, лаконичный крой</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1761646238225-6aa73c578344?w=500&q=80&auto=format&fit=crop" alt="Креативная модель — необычная скульптурная форма"></div><h3>Креативная модель</h3><p>нестандартная форма, яркие акценты, авторский дизайн</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1538022890810-8f4000ca9a10?w=500&q=80&auto=format&fit=crop" alt="Классическая женская косметичка"></div><h3>Женская косметичка</h3><p>классический вариант на молнии</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1671272980555-11236fd5c8c5?w=500&q=80&auto=format&fit=crop" alt="Креативная косметичка яркого цвета"></div><h3>Креативная косметичка</h3><p>необычная форма, декоративные детали</p></div>
+    <span class="section-kicker">В деле, а не на витрине</span>
+    <h2>Изделия в жизни</h2>
+    <p class="section-lede">Наши изделия шьются не для каталога — ими пользуются каждый день: в городе, на встречах, в дороге. Так они и должны выглядеть на фото.</p>
+    <div class="life-grid">
+      <div class="life-card">
+        <div class="life-photo"><img src="assets/life/backpack-street.jpg" alt="Рюкзак на заказ в повседневном использовании в городе" loading="lazy"></div>
+        <div class="life-caption"><h3>Рюкзак в городе</h3><p>Лёгкий, практичный, с местом под ноутбук и мелочи — для тех, кто весь день в движении.</p></div>
+      </div>
+      <div class="life-card">
+        <div class="life-photo"><img src="assets/life/satchel-steps.jpg" alt="Деловая сумка-сэтчел на заказ в повседневном использовании" loading="lazy"></div>
+        <div class="life-caption"><h3>Сумка на встречу</h3><p>Строгая форма держит вид весь день — от переговоров до конца рабочего дня.</p></div>
+      </div>
+      <div class="life-card">
+        <div class="life-photo"><img src="assets/life/cosmetic-inuse.jpg" alt="Косметичка на заказ с содержимым в повседневном использовании" loading="lazy"></div>
+        <div class="life-caption"><h3>Порядок под рукой</h3><p>Отделения нужного размера — ничего не мнётся и не теряется на дне сумки.</p></div>
+      </div>
     </div>
-    <p style="text-align:center; margin-top:20px; font-size:14px; font-weight:600; color:#7a6a5a;">* фото для примера — при готовности замените на реальные снимки ваших изделий</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="section-kicker">Два направления</span>
+    <h2>Классика и креатив в одном производстве</h2>
+    <p class="section-lede">Шьём и то, и другое на одних мощностях — разница только в техническом задании.</p>
+
+    <div class="direction-block">
+      <div class="direction-copy">
+        <span class="direction-tag">Классика</span>
+        <h3>Строгая форма, которая не выходит из моды</h3>
+        <p>Лаконичный крой, спокойные пропорции, качественная фурнитура. То, что выбирают для деловых подарков, корпоративных коллекций и повседневных моделей — вещь работает на бренд, не отвлекая на себя внимание.</p>
+        <p>Кожа, экокожа, плотный текстиль — под ваше ТЗ и бюджет партии.</p>
+      </div>
+      <div class="direction-photo"><img src="assets/products/classic-tote.jpg" alt="Классическая структурная сумка-тоут из плотной кожи"></div>
+    </div>
+
+    <div class="direction-block reverse">
+      <div class="direction-copy">
+        <span class="direction-tag">Креатив</span>
+        <h3>Форма как высказывание</h3>
+        <p>Нестандартный крой, скульптурный объём, авторская геометрия — изделия, которые не спутать с типовым каталожным товаром. Подходит для капсульных коллекций и творческих брендов, где сама форма — часть истории.</p>
+        <p>Реализуем сложные лекала и нестандартные материалы — присылайте эскиз или референс.</p>
+      </div>
+      <div class="direction-photo"><img src="assets/products/creative-sculptural.jpg" alt="Скульптурные авторские сумки нестандартной плиссированной формы"></div>
+    </div>
   </div>
 </section>
 
@@ -497,22 +588,22 @@
 <section>
   <div class="container">
     <h2>Частые вопросы</h2>
-    <div class="faq-item">
-      <h3>Какой минимальный тираж?</h3>
+    <details class="faq-item" open>
+      <summary><h3>Какой минимальный тираж?</h3></summary>
       <p>От 50 изделий в партии. Для отдельных моделей возможны исключения — условия обсуждаем индивидуально.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Можно ли заказать изделие только по фотографии?</h3>
+    </details>
+    <details class="faq-item">
+      <summary><h3>Можно ли заказать изделие только по фотографии?</h3></summary>
       <p>Да. Разработаем лекала самостоятельно на основе фотографии, эскиза или образца.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Сколько занимает производство партии?</h3>
+    </details>
+    <details class="faq-item">
+      <summary><h3>Сколько занимает производство партии?</h3></summary>
       <p>Срок зависит от объёма и сложности изделия. Точный срок согласовываем после утверждения образца.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Можно ли внести изменения после старта производства?</h3>
+    </details>
+    <details class="faq-item">
+      <summary><h3>Можно ли внести изменения после старта производства?</h3></summary>
       <p>Изменения можно внести на этапе согласования образца. После запуска партии возможность изменений обсуждается отдельно.</p>
-    </div>
+    </details>
   </div>
 </section>
 
@@ -566,19 +657,19 @@
 
     <div class="contacts-row">
       <a href="tel:+79991234567" class="contact-item">
-        <span class="contact-icon">📞</span>
+        <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
         <span>+7 (999) 123-45-67</span>
       </a>
       <a href="mailto:zakaz@shveypro.ru" class="contact-item">
-        <span class="contact-icon">✉️</span>
+        <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg></span>
         <span>zakaz@shveypro.ru</span>
       </a>
       <a href="https://t.me/shveypro" class="contact-item">
-        <span class="contact-icon">💬</span>
+        <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
         <span>@shveypro в Telegram</span>
       </a>
       <a href="https://wa.me/79991234567" class="contact-item">
-        <span class="contact-icon">🟢</span>
+        <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
         <span>WhatsApp</span>
       </a>
     </div>
@@ -590,7 +681,7 @@
       <input type="text" placeholder="Что нужно пошить" required>
       <input type="number" placeholder="Количество (от 50 шт)" min="50">
       <label class="file-label">
-        📎 Прикрепить фото / эскиз / образец
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:6px;"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Прикрепить фото / эскиз / образец
         <input type="file" style="display:none">
       </label>
       <button type="submit">Получить точный расчёт</button>
