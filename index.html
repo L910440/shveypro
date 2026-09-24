@@ -281,6 +281,23 @@
   .life-card .life-caption h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
   .life-card .life-caption p { font-size: 14px; color: var(--text-muted); text-wrap: pretty; }
 
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+  .team-card {
+    background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 18px rgba(36,72,58,0.08);
+    transition: box-shadow 0.3s ease, transform 0.15s ease;
+    will-change: transform;
+  }
+  .team-card:hover { box-shadow: 0 20px 40px -14px rgba(36,72,58,0.28); }
+  .team-card .team-photo { width: 100%; aspect-ratio: 4/5; overflow: hidden; }
+  .team-card .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .team-card:hover .team-photo img { transform: scale(1.04); }
+  .team-card .team-info { padding: 16px 18px 20px; }
+  .team-card .team-role { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--dark); }
+  .team-card .team-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; text-wrap: pretty; }
+
   /* Classic / Creative editorial blocks */
   .direction-block {
     display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center;
@@ -638,6 +655,44 @@
   </div>
 </section>
 
+<section>
+  <div class="container">
+    <span class="section-kicker">Кто делает ваш заказ</span>
+    <h2>Наша команда</h2>
+    <p class="section-lede">Над каждым изделием работает не один человек, а слаженная цепочка специалистов — от разработки лекал до упаковки готовой партии.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1758599543141-8eb4fa0d922d?w=500&q=80&auto=format&fit=crop" alt="Директор производства" loading="lazy"></div>
+        <div class="team-info"><div class="team-role">Директор</div><div class="team-desc">Отвечает за сроки, качество и соответствие производства требованиям каждого заказа.</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1523901839036-a3030662f220?w=500&q=80&auto=format&fit=crop" alt="Технолог швейного производства" loading="lazy"></div>
+        <div class="team-info"><div class="team-role">Технолог</div><div class="team-desc">Разрабатывает лекала и технологию пошива под изделие, подбирает материалы и проверяет посадку на образце.</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1758611972271-fce956444233?w=500&q=80&auto=format&fit=crop" alt="Менеджер по работе с заказчиками" loading="lazy"></div>
+        <div class="team-info"><div class="team-role">Менеджер</div><div class="team-desc">Ведёт заказ от заявки до отгрузки, на связи с клиентом на каждом этапе производства.</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1764298493231-59ae059cdc7e?w=500&q=80&auto=format&fit=crop" alt="Раскройщик тканей" loading="lazy"></div>
+        <div class="team-info"><div class="team-role">Раскройщик</div><div class="team-desc">Раскраивает материал точно по лекалам, экономит ткань и сохраняет рисунок в каждой детали.</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1753162659619-e6d33f4a5d08?w=500&q=80&auto=format&fit=crop" alt="Швеи на производстве" loading="lazy"></div>
+        <div class="team-info"><div class="team-role">Швеи</div><div class="team-desc">Собирают изделие на профессиональном оборудовании, следят за качеством каждого шва.</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1742281692582-3507d7219c33?w=500&q=80&auto=format&fit=crop" alt="Отдел технического контроля качества" loading="lazy"></div>
+        <div class="team-info"><div class="team-role">Отдел ОТК</div><div class="team-desc">Проверяет качество на каждом этапе — от входного контроля материалов до финальной приёмки изделия.</div></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1449247666642-264389f5f5b1?w=500&q=80&auto=format&fit=crop" alt="Упаковщик готовой продукции" loading="lazy"></div>
+        <div class="team-info"><div class="team-role">Упаковщики</div><div class="team-desc">Аккуратно упаковывают готовые изделия для сохранности при хранении и доставке.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="bg-light">
   <div class="container">
     <span class="section-kicker">В деле, а не на витрине</span>
@@ -910,7 +965,7 @@ function submitOrderForm(e) {
 document.addEventListener('DOMContentLoaded', function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var items = document.querySelectorAll(
-    '.about-grid .card, .product-card, .why-card, .life-card, .direction-block, .testimonial, .step, .materials-group, .calc-box, .order-form, .faq-item'
+    '.about-grid .card, .product-card, .why-card, .life-card, .team-card, .direction-block, .testimonial, .step, .materials-group, .calc-box, .order-form, .faq-item'
   );
 
   if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -950,6 +1005,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.product-card').forEach(function (el) { attachTilt(el, 4); });
     document.querySelectorAll('.life-card').forEach(function (el) { attachTilt(el, 3); });
+    document.querySelectorAll('.team-card').forEach(function (el) { attachTilt(el, 3); });
   }
 });
 </script>
