@@ -112,6 +112,22 @@
     .reveal { opacity: 1; transform: none; transition: none; }
   }
 
+  /* Photo wake-up — soft auto zoom/pan on scroll into view (mobile + desktop) */
+  .life-photo img.photo-wake, .team-photo img.photo-wake {
+    transform: scale(1.16) translate3d(1.5%, -1%, 0);
+    transition: transform 1.6s cubic-bezier(.16,.84,.44,1);
+    will-change: transform;
+  }
+  .life-photo img.photo-wake.is-awake, .team-photo img.photo-wake.is-awake { transform: none; }
+  .life-card:hover .life-photo img.photo-wake,
+  .team-card:hover .team-photo img.photo-wake {
+    transform: scale(1.04);
+    transition: transform 0.4s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .life-photo img.photo-wake, .team-photo img.photo-wake { transform: none; transition: none; }
+  }
+
   /* Header */
   header {
     position: sticky; top: 0; z-index: 10;
@@ -647,15 +663,15 @@
     <p class="section-lede">Наши изделия шьются не для каталога — ими пользуются каждый день: в городе, на встречах, в дороге. Так они и должны выглядеть на фото.</p>
     <div class="life-grid">
       <div class="life-card">
-        <div class="life-photo"><img src="assets/life/backpack-closeup.jpg" alt="Рюкзак на заказ крупным планом на плече в повседневном использовании" loading="lazy"></div>
+        <div class="life-photo"><img class="photo-wake" src="assets/life/backpack-closeup.jpg" alt="Рюкзак на заказ крупным планом на плече в повседневном использовании" loading="lazy"></div>
         <div class="life-caption"><h3>Рюкзак в городе</h3><p>Лёгкий, практичный, с местом под ноутбук и мелочи — для тех, кто весь день в движении.</p></div>
       </div>
       <div class="life-card">
-        <div class="life-photo"><img src="assets/life/satchel-steps.jpg" alt="Деловая сумка-сэтчел на заказ в повседневном использовании" loading="lazy"></div>
+        <div class="life-photo"><img class="photo-wake" src="assets/life/satchel-steps.jpg" alt="Деловая сумка-сэтчел на заказ в повседневном использовании" loading="lazy"></div>
         <div class="life-caption"><h3>Сумка на встречу</h3><p>Строгая форма держит вид весь день — от переговоров до конца рабочего дня.</p></div>
       </div>
       <div class="life-card">
-        <div class="life-photo"><img src="assets/life/cosmetic-inuse.jpg" alt="Косметичка-органайзер на заказ с раздельными отделениями для косметики и флаконов" loading="lazy"></div>
+        <div class="life-photo"><img class="photo-wake" src="assets/life/cosmetic-inuse.jpg" alt="Косметичка-органайзер на заказ с раздельными отделениями для косметики и флаконов" loading="lazy"></div>
         <div class="life-caption"><h3>Всё разложено по местам</h3><p>Карман под кисти, сетка под уход, отдельный чехол для флаконов — каждой вещи своё место.</p></div>
       </div>
     </div>
@@ -676,23 +692,23 @@
     </div>
     <div class="team-grid">
       <div class="team-card">
-        <div class="team-photo"><img src="assets/team/team-1-konstruktor.jpg" alt="Конструктор разрабатывает лекало изделия" loading="lazy"></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-1-konstruktor.jpg" alt="Конструктор разрабатывает лекало изделия" loading="lazy"></div>
         <div class="team-info"><div class="team-role">Конструктор</div><div class="team-desc">Разработка конструкции изделия, лекал и технической документации для производства.</div></div>
       </div>
       <div class="team-card">
-        <div class="team-photo"><img src="assets/team/team-2-tekhnolog.jpg" alt="Технолог проверяет посадку изделия на образце" loading="lazy"></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-2-tekhnolog.jpg" alt="Технолог проверяет посадку изделия на образце" loading="lazy"></div>
         <div class="team-info"><div class="team-role">Технолог</div><div class="team-desc">Разработка технологического процесса, подготовка изделия и запуск в производство.</div></div>
       </div>
       <div class="team-card">
-        <div class="team-photo"><img src="assets/team/team-3-shveya.jpg" alt="Швея собирает изделие на производстве" loading="lazy"></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-3-shveya.jpg" alt="Швея собирает изделие на производстве" loading="lazy"></div>
         <div class="team-info"><div class="team-role">Швея</div><div class="team-desc">Пошив и сборка изделий с соблюдением технологии производства и требований к качеству.</div></div>
       </div>
       <div class="team-card">
-        <div class="team-photo"><img src="assets/team/team-4-otk.jpg" alt="Контроль качества готового изделия" loading="lazy"></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-4-otk.jpg" alt="Контроль качества готового изделия" loading="lazy"></div>
         <div class="team-info"><div class="team-role">Контроль качества</div><div class="team-desc">Проверка качества на всех этапах производства — от входного контроля материалов до контроля готового изделия.</div></div>
       </div>
       <div class="team-card">
-        <div class="team-photo"><img src="assets/team/team-5-upakovka.jpg" alt="Упаковка готовых изделий к отгрузке" loading="lazy"></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-5-upakovka.jpg" alt="Упаковка готовых изделий к отгрузке" loading="lazy"></div>
         <div class="team-info"><div class="team-role">Упаковка</div><div class="team-desc">Подготовка готовых изделий к отгрузке, упаковка партий.</div></div>
       </div>
     </div>
@@ -974,6 +990,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   items.forEach(function (el) { io.observe(el); });
+
+  var wakePhotos = document.querySelectorAll('.photo-wake');
+  var wakeIo = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-awake');
+        wakeIo.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '0px 0px -60px 0px' });
+  wakePhotos.forEach(function (el) { wakeIo.observe(el); });
 
   function attachTilt(el, maxTilt) {
     el.style.transition = el.style.transition ? el.style.transition + ', transform 0.15s ease' : 'transform 0.15s ease';
