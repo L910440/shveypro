@@ -283,6 +283,35 @@
   .life-card .life-caption h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
   .life-card .life-caption p { font-size: 14px; color: var(--text-muted); text-wrap: pretty; }
 
+  /* Team avatars — floating circles */
+  @keyframes avatar-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .team-avatars {
+    display: flex; justify-content: center; gap: 18px;
+    margin: 8px 0 36px;
+  }
+  .team-avatars img {
+    width: 68px; height: 68px; border-radius: 50%;
+    object-fit: cover; display: block;
+    border: 3px solid var(--card-bg);
+    box-shadow: 0 10px 22px -8px rgba(36,72,58,0.35);
+    animation: avatar-float 3.6s ease-in-out infinite;
+  }
+  .team-avatars img:nth-child(1) { animation-delay: 0s; }
+  .team-avatars img:nth-child(2) { animation-delay: 0.5s; }
+  .team-avatars img:nth-child(3) { animation-delay: 1s; }
+  .team-avatars img:nth-child(4) { animation-delay: 1.5s; }
+  .team-avatars img:nth-child(5) { animation-delay: 2s; }
+  @media (prefers-reduced-motion: reduce) {
+    .team-avatars img { animation: none; }
+  }
+  @media (max-width: 640px) {
+    .team-avatars img { width: 52px; height: 52px; }
+    .team-avatars { gap: 12px; }
+  }
+
   /* Team */
   .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
   .team-card {
@@ -638,6 +667,13 @@
     <span class="section-kicker">Кто делает ваш заказ</span>
     <h2>Наша команда</h2>
     <p class="section-lede">Над каждым изделием работает не один человек, а слаженная цепочка специалистов — от разработки лекал до упаковки готовой партии.</p>
+    <div class="team-avatars" aria-hidden="true">
+      <img src="assets/team/avatars/avatar-1.jpg" alt="" loading="lazy">
+      <img src="assets/team/avatars/avatar-2.jpg" alt="" loading="lazy">
+      <img src="assets/team/avatars/avatar-3.jpg" alt="" loading="lazy">
+      <img src="assets/team/avatars/avatar-4.jpg" alt="" loading="lazy">
+      <img src="assets/team/avatars/avatar-5.jpg" alt="" loading="lazy">
+    </div>
     <div class="team-grid">
       <div class="team-card">
         <div class="team-photo"><img src="assets/team/team-1-konstruktor.jpg" alt="Конструктор разрабатывает лекало изделия" loading="lazy"></div>
