@@ -968,7 +968,9 @@ function submitOrderForm(e) {
   btn.disabled = true;
   btn.textContent = 'Отправляем...';
 
-  fetch('https://formsubmit.co/larochka.a.b@gmail.com', {
+  // TODO перед запуском у заказчика: заменить на реальный email заказчика
+  // (на этот адрес FormSubmit пришлёт письмо с подтверждением один раз)
+  fetch('https://formsubmit.co/ЗАМЕНИТЕ-НА-EMAIL-ЗАКАЗЧИКА@example.com', {
     method: 'POST',
     body: new FormData(form),
     headers: { 'Accept': 'application/json' }
