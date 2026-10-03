@@ -203,6 +203,7 @@
     --bleed: max(0px, calc((100vw - 1120px) / 2));
     width: calc(100% + var(--bleed));
     margin-right: calc(-1 * var(--bleed));
+    container-type: inline-size;
   }
   .hero-scene video {
     width: 100%; height: 100%; object-fit: contain; display: block;
@@ -213,6 +214,76 @@
       linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
     mask-composite: intersect;
   }
+
+  /* Языковой оверлей на промо-видео: подменяет вшитый в кадр русский текст для EN/PT,
+     повторяя точную геометрию и градиент исходного рендера (hyperframes), чтобы не было шва. */
+  .video-i18n-overlay {
+    position: absolute; inset: 0; display: none; pointer-events: none; overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .video-i18n-overlay.is-active { display: block; }
+  .vo-scene {
+    position: absolute; inset: 0; opacity: 0; transition: opacity 0.35s ease;
+    background-color: #F7E1C4;
+    background-image:
+      radial-gradient(ellipse 55% 40% at 8% 6%, rgba(255,250,240,0.8) 0%, rgba(255,250,240,0) 70%),
+      radial-gradient(ellipse 50% 45% at 92% 15%, rgba(247,216,184,0.6) 0%, rgba(247,216,184,0) 70%),
+      radial-gradient(ellipse 60% 50% at 12% 65%, rgba(236,206,168,0.5) 0%, rgba(236,206,168,0) 70%),
+      radial-gradient(ellipse 65% 55% at 88% 90%, rgba(200,107,74,0.05) 0%, rgba(200,107,74,0) 70%),
+      linear-gradient(165deg, #FBF3E6 0%, #F7E1C4 50%, #ECCEA8 100%);
+  }
+  .vo-scene.is-on { opacity: 1; }
+  .vo-logo {
+    font-family: var(--font-display); font-style: italic; font-weight: 700; color: #24483A;
+  }
+  .vo-underline { height: 0.21cqw; min-height: 2px; background: #C86B4A; border-radius: 2px; width: 9.4cqw; margin: 1.15cqw auto 0; }
+  .vo-centered { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  #vo-scene1 .vo-logo { font-size: max(6.67cqw, 24px); }
+  #vo-scene1 .vo-tagline { margin-top: 1.04cqw; font-size: max(1.35cqw, 11px); color: #5E5849; font-weight: 500; letter-spacing: 0.02em; }
+  .vo-panel-text {
+    position: absolute; left: 5.73%; top: 0; height: 100%; width: 39.6%;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .vo-eyebrow { font-size: max(1.15cqw, 10px); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A3F26; margin-bottom: 1.15cqw; }
+  .vo-panel-text h2 {
+    font-family: var(--font-display); font-weight: 700; font-size: max(3.02cqw, 15px); line-height: 1.22; color: #24483A; max-width: 34.4%; margin: 0;
+  }
+  .vo-panel-text h2 em { font-style: italic; color: #8A3F26; }
+  .vo-panel-text p.vo-sub { margin-top: 1.35cqw; font-size: max(1.09cqw, 11px); line-height: 1.6; color: #5E5849; max-width: 29.2%; }
+  .vo-stats-row { display: flex; gap: 2.29cqw; margin-top: 2.08cqw; }
+  .vo-stat .vo-num { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: max(1.56cqw, 12px); color: #24483A; }
+  .vo-stat .vo-label { font-size: max(0.73cqw, 9px); color: #5E5849; margin-top: 2px; font-weight: 500; }
+  .vo-photo-frame {
+    position: absolute; right: 5%; top: 8.33%; width: 46.9%; height: 83.3%;
+    border-radius: 1.46cqw; overflow: hidden; box-shadow: 0 2.08cqw 4.17cqw -1.04cqw rgba(36,72,58,0.35);
+  }
+  .vo-photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vo-photo-tag {
+    position: absolute; left: 1.67cqw; bottom: 1.67cqw; background: rgba(247,243,234,0.94);
+    color: #24483A; font-weight: 700; font-size: max(0.94cqw, 10px); padding: max(0.52cqw, 5px) max(1.04cqw, 10px); border-radius: 999px; white-space: nowrap;
+  }
+  #vo-scene4 .vo-caption-center { position: absolute; left: 0; right: 0; top: 5.56%; text-align: center; }
+  #vo-scene4 .vo-caption-center h2 { font-family: var(--font-display); font-weight: 700; font-size: max(3.02cqw, 15px); color: #24483A; margin: 0; }
+  #vo-scene4 .vo-caption-center h2 em { color: #8A3F26; font-style: italic; }
+  #vo-scene4 .vo-photo-frame { width: 29.2%; height: 66.7%; top: 16.67%; border-radius: 1.25cqw; }
+  #vo-scene4 .vo-photo-frame.vo-left { left: 6.77%; right: auto; }
+  #vo-scene4 .vo-photo-frame.vo-right { right: 6.77%; }
+  #vo-scene5 .vo-logo { font-size: max(4.38cqw, 20px); }
+  #vo-scene5 .vo-cta-line {
+    margin-top: 1.46cqw; font-family: var(--font-display); font-weight: 700; font-size: max(3.02cqw, 15px); color: #24483A; max-width: 57.3%;
+  }
+  #vo-scene5 .vo-btn {
+    margin-top: 2.08cqw; color: #fff; font-weight: 700; font-size: max(1.25cqw, 12px); font-family: var(--font-body);
+    padding: max(1.15cqw, 10px) max(2.5cqw, 20px); border-radius: 999px;
+    background: linear-gradient(180deg, #E0916B 0%, #B25A3B 50%, #8A3F26 100%);
+    box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.5), inset 0 -3px 6px rgba(87,36,20,0.35), 0 0.83cqw 1.56cqw -0.52cqw rgba(151,69,43,0.55);
+  }
+  #vo-scene5 .vo-url { margin-top: 1.35cqw; font-size: max(0.99cqw, 10px); color: #5E5849; font-weight: 500; }
   .hero-scene .sound-toggle {
     position: absolute; bottom: 18px; right: 18px; z-index: 2;
     width: 44px; height: 44px; border-radius: 50%; border: none;
@@ -591,6 +662,61 @@
         data-i18n-attr="aria-label:hero_video_aria"
         aria-label="Промо-видео ШвейПро с музыкой"
       ></video>
+      <div class="video-i18n-overlay" id="video-i18n-overlay" aria-hidden="true">
+        <div class="vo-scene" id="vo-scene1">
+          <div class="vo-centered">
+            <div class="vo-logo">ШвейПро</div>
+            <div class="vo-underline"></div>
+            <div class="vo-tagline" data-vo="v_s1_tagline">пошив на заказ для бизнеса</div>
+          </div>
+        </div>
+        <div class="vo-scene" id="vo-scene2">
+          <div class="vo-panel-text">
+            <div class="vo-eyebrow" data-vo="hero_eyebrow">Производство на заказ · для бизнеса</div>
+            <h2 data-vo-html="v_s2_h2">Пошив сумок, рюкзаков и <em>текстиля</em> на заказ для бизнеса</h2>
+          </div>
+          <div class="vo-photo-frame">
+            <img src="assets/video/overlay/scene1-backpack.jpg" alt="" loading="lazy">
+            <div class="vo-photo-tag" data-vo="v_s2_tag">Рюкзак · ручная работа</div>
+          </div>
+        </div>
+        <div class="vo-scene" id="vo-scene3">
+          <div class="vo-panel-text">
+            <div class="vo-eyebrow" data-vo="v_s3_eyebrow">Полный цикл производства</div>
+            <p class="vo-sub" data-vo="v_s3_sub">От макета до упакованной партии — на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.</p>
+            <div class="vo-stats-row">
+              <div class="vo-stat"><div class="vo-num" data-vo="hero_stat1_num">от 50 шт</div><div class="vo-label" data-vo="hero_stat1_label">минимальная партия</div></div>
+              <div class="vo-stat"><div class="vo-num" data-vo="hero_stat2_num">полный цикл</div><div class="vo-label" data-vo="hero_stat2_label">от макета до упаковки</div></div>
+              <div class="vo-stat"><div class="vo-num" data-vo="hero_stat3_num">образец</div><div class="vo-label" data-vo="hero_stat3_label">перед запуском партии</div></div>
+            </div>
+          </div>
+          <div class="vo-photo-frame">
+            <img src="assets/video/overlay/scene2-shoulder-bag.jpg" alt="" loading="lazy">
+            <div class="vo-photo-tag" data-vo="v_s3_tag">Сумка · натуральная кожа</div>
+          </div>
+        </div>
+        <div class="vo-scene" id="vo-scene4">
+          <div class="vo-caption-center">
+            <h2 data-vo-html="v_s4_h2">Классика и <em>авторские</em> изделия</h2>
+          </div>
+          <div class="vo-photo-frame vo-left">
+            <img src="assets/video/overlay/classic-tote.jpg" alt="" loading="lazy">
+            <div class="vo-photo-tag" data-vo="classic_tag">Классика</div>
+          </div>
+          <div class="vo-photo-frame vo-right">
+            <img src="assets/video/overlay/creative-sculptural.jpg" alt="" loading="lazy">
+            <div class="vo-photo-tag" data-vo="v_s4_tag_right">Авторская форма</div>
+          </div>
+        </div>
+        <div class="vo-scene" id="vo-scene5">
+          <div class="vo-centered">
+            <div class="vo-logo">ШвейПро</div>
+            <div class="vo-cta-line" data-vo="v_s5_cta">Рассчитаем стоимость вашего заказа</div>
+            <div class="vo-btn" data-vo="v_s5_btn">Рассчитать стоимость →</div>
+            <div class="vo-url">shveypro-prototype.vercel.app</div>
+          </div>
+        </div>
+      </div>
       <button type="button" id="hero-sound-toggle" class="sound-toggle" onclick="toggleHeroSound()" data-i18n-attr="aria-label:sound_on_label" aria-label="Включить звук">
         <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -1059,7 +1185,17 @@ var translations = {
     order_success: '✅ Спасибо! Заявка отправлена. Мы свяжемся с вами для уточнения деталей.',
     order_error: 'Не получилось отправить заявку. Напишите нам напрямую в <a href="https://t.me/shveypro">Telegram</a> или <a href="https://wa.me/79991234567">WhatsApp</a>.',
     back_to_top: '↑ Вернуться к началу',
-    footer_line1: 'ШвейПро — пошив изделий на заказ для бизнеса'
+    footer_line1: 'ШвейПро — пошив изделий на заказ для бизнеса',
+    v_s1_tagline: 'пошив на заказ для бизнеса',
+    v_s2_h2: 'Пошив сумок, рюкзаков и <em>текстиля</em> на заказ для бизнеса',
+    v_s2_tag: 'Рюкзак · ручная работа',
+    v_s3_eyebrow: 'Полный цикл производства',
+    v_s3_sub: 'От макета до упакованной партии — на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.',
+    v_s3_tag: 'Сумка · натуральная кожа',
+    v_s4_h2: 'Классика и <em>авторские</em> изделия',
+    v_s4_tag_right: 'Авторская форма',
+    v_s5_cta: 'Рассчитаем стоимость вашего заказа',
+    v_s5_btn: 'Рассчитать стоимость →'
   },
   en: {
     title: 'ShveyPro — custom bags, backpacks, and textile products for business',
@@ -1165,7 +1301,17 @@ var translations = {
     order_success: '✅ Thank you! Your request has been sent. We will contact you to clarify the details.',
     order_error: 'Could not send the request. Message us directly on <a href="https://t.me/shveypro">Telegram</a> or <a href="https://wa.me/79991234567">WhatsApp</a>.',
     back_to_top: '↑ Back to top',
-    footer_line1: 'ShveyPro — custom-made products for business'
+    footer_line1: 'ShveyPro — custom-made products for business',
+    v_s1_tagline: 'custom sewing for business',
+    v_s2_h2: 'Custom bags, backpacks, and <em>textiles</em> for business',
+    v_s2_tag: 'Backpack · handmade',
+    v_s3_eyebrow: 'Full production cycle',
+    v_s3_sub: 'From design to a packaged batch — at our own facility. We work from photos, sketches, samples, or ready patterns.',
+    v_s3_tag: 'Bag · genuine leather',
+    v_s4_h2: 'Classic and <em>signature</em> pieces',
+    v_s4_tag_right: 'Signature shape',
+    v_s5_cta: 'Let’s calculate the cost of your order',
+    v_s5_btn: 'Calculate cost →'
   },
   pt: {
     title: 'ShveyPro — confeção de malas, mochilas e artigos têxteis por encomenda para empresas',
@@ -1271,7 +1417,17 @@ var translations = {
     order_success: '✅ Obrigado! O seu pedido foi enviado. Vamos contactá-lo para esclarecer os detalhes.',
     order_error: 'Não foi possível enviar o pedido. Contacte-nos diretamente pelo <a href="https://t.me/shveypro">Telegram</a> ou <a href="https://wa.me/79991234567">WhatsApp</a>.',
     back_to_top: '↑ Voltar ao topo',
-    footer_line1: 'ShveyPro — confeção de artigos por encomenda para empresas'
+    footer_line1: 'ShveyPro — confeção de artigos por encomenda para empresas',
+    v_s1_tagline: 'confeção por encomenda para empresas',
+    v_s2_h2: 'Malas, mochilas e <em>têxteis</em> por encomenda para empresas',
+    v_s2_tag: 'Mochila · feita à mão',
+    v_s3_eyebrow: 'Ciclo de produção completo',
+    v_s3_sub: 'Do design à encomenda embalada — nas nossas próprias instalações. Trabalhamos a partir de fotos, esboços, amostras ou moldes prontos.',
+    v_s3_tag: 'Mala · pele natural',
+    v_s4_h2: 'Peças clássicas e <em>de autor</em>',
+    v_s4_tag_right: 'Forma de autor',
+    v_s5_cta: 'Vamos calcular o custo da sua encomenda',
+    v_s5_btn: 'Calcular custo →'
   }
 };
 
@@ -1313,6 +1469,17 @@ function applyLanguage(lang) {
     btn.classList.toggle('is-active', btn.getAttribute('data-lang-btn') === lang);
   });
 
+  document.querySelectorAll('[data-vo]').forEach(function (el) {
+    var key = el.getAttribute('data-vo');
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-vo-html]').forEach(function (el) {
+    var key = el.getAttribute('data-vo-html');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  var videoOverlay = document.getElementById('video-i18n-overlay');
+  if (videoOverlay) videoOverlay.classList.toggle('is-active', lang !== 'ru');
+
   var video = document.getElementById('hero-video');
   var soundBtn = document.getElementById('hero-sound-toggle');
   if (video && soundBtn) {
@@ -1330,11 +1497,36 @@ function detectInitialLang() {
   return 'ru';
 }
 
+var VO_SCENES = [
+  { id: 'vo-scene1', start: 0, end: 2.3 },
+  { id: 'vo-scene2', start: 2.3, end: 6.3 },
+  { id: 'vo-scene3', start: 6.3, end: 9.9 },
+  { id: 'vo-scene4', start: 9.9, end: 13.2 },
+  { id: 'vo-scene5', start: 13.2, end: 16.01 }
+];
+
+function initVideoOverlaySync() {
+  var video = document.getElementById('hero-video');
+  var overlay = document.getElementById('video-i18n-overlay');
+  if (!video || !overlay) return;
+
+  video.addEventListener('timeupdate', function () {
+    if (!overlay.classList.contains('is-active')) return;
+    var t = video.currentTime;
+    VO_SCENES.forEach(function (scene) {
+      var el = document.getElementById(scene.id);
+      if (!el) return;
+      el.classList.toggle('is-on', t >= scene.start && t < scene.end);
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   applyLanguage(detectInitialLang());
   document.querySelectorAll('.lang-btn').forEach(function (btn) {
     btn.addEventListener('click', function () { applyLanguage(btn.getAttribute('data-lang-btn')); });
   });
+  initVideoOverlaySync();
 });
 
 function toggleHeroSound() {
