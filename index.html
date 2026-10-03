@@ -177,6 +177,9 @@
     mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%),
       linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
     mask-composite: intersect;
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .hero-scene .sound-toggle {
     position: absolute; bottom: 18px; right: 18px; z-index: 2;
@@ -516,7 +519,7 @@
         id="hero-video"
         src="assets/video/shveypro-promo.mp4"
         poster="assets/video/shveypro-promo-poster.jpg"
-        autoplay muted loop playsinline
+        autoplay muted loop playsinline preload="auto"
         aria-label="Промо-видео ШвейПро с музыкой"
       ></video>
       <button type="button" id="hero-sound-toggle" class="sound-toggle" onclick="toggleHeroSound()" aria-label="Включить звук">
