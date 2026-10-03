@@ -140,6 +140,25 @@
     color: #fff;
     padding: 11px 20px; text-decoration: none;
     font-weight: 600; font-size: 14px;
+    white-space: nowrap;
+  }
+  .header-right { display: flex; align-items: center; gap: 14px; }
+  .lang-switch {
+    display: flex; gap: 4px; background: rgba(255,255,255,0.12);
+    border-radius: 999px; padding: 3px;
+  }
+  .lang-btn {
+    border: none; background: transparent; color: rgba(255,255,255,0.7);
+    font-family: var(--font-body); font-weight: 700; font-size: 12.5px;
+    letter-spacing: 0.04em; padding: 6px 10px; border-radius: 999px;
+    cursor: pointer; transition: background 0.2s ease, color 0.2s ease;
+  }
+  .lang-btn:hover { color: #fff; }
+  .lang-btn.is-active { background: #fff; color: var(--dark); }
+  @media (max-width: 560px) {
+    header .container { flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .header-right { gap: 10px; }
+    .header-btn { padding: 10px 16px; font-size: 13px; }
   }
 
   /* Hero */
@@ -539,21 +558,28 @@
 <header>
   <div class="container">
     <div class="logo">ШвейПро</div>
-    <a href="#calculator" class="header-btn">Рассчитать стоимость</a>
+    <div class="header-right">
+      <div class="lang-switch" role="group" aria-label="Language / Язык / Idioma">
+        <button type="button" class="lang-btn" data-lang-btn="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        <button type="button" class="lang-btn" data-lang-btn="pt">PT</button>
+      </div>
+      <a href="#calculator" class="header-btn" data-i18n="header_cta">Рассчитать стоимость</a>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
     <div class="hero-text">
-      <span class="eyebrow">Производство на заказ · для бизнеса</span>
-      <h1>Пошив сумок, рюкзаков и <em>текстильных изделий</em> на заказ для бизнеса</h1>
-      <p class="sub">От макета до упакованной партии — полный цикл производства на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.</p>
-      <a href="#calculator" class="cta-btn">Рассчитать стоимость заказа</a>
+      <span class="eyebrow" data-i18n="hero_eyebrow">Производство на заказ · для бизнеса</span>
+      <h1 data-i18n-html="hero_h1">Пошив сумок, рюкзаков и <em>текстильных изделий</em> на заказ для бизнеса</h1>
+      <p class="sub" data-i18n="hero_sub">От макета до упакованной партии — полный цикл производства на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.</p>
+      <a href="#calculator" class="cta-btn" data-i18n="hero_cta">Рассчитать стоимость заказа</a>
       <div class="hero-stats">
-        <div><div class="num">от 50 шт</div><div class="label">минимальная партия</div></div>
-        <div><div class="num">полный цикл</div><div class="label">от макета до упаковки</div></div>
-        <div><div class="num">образец</div><div class="label">перед запуском партии</div></div>
+        <div><div class="num" data-i18n="hero_stat1_num">от 50 шт</div><div class="label" data-i18n="hero_stat1_label">минимальная партия</div></div>
+        <div><div class="num" data-i18n="hero_stat2_num">полный цикл</div><div class="label" data-i18n="hero_stat2_label">от макета до упаковки</div></div>
+        <div><div class="num" data-i18n="hero_stat3_num">образец</div><div class="label" data-i18n="hero_stat3_label">перед запуском партии</div></div>
       </div>
     </div>
     <div class="hero-scene">
@@ -562,9 +588,10 @@
         src="assets/video/shveypro-promo.mp4"
         poster="assets/video/shveypro-promo-poster.jpg"
         autoplay muted loop playsinline
+        data-i18n-attr="aria-label:hero_video_aria"
         aria-label="Промо-видео ШвейПро с музыкой"
       ></video>
-      <button type="button" id="hero-sound-toggle" class="sound-toggle" onclick="toggleHeroSound()" aria-label="Включить звук">
+      <button type="button" id="hero-sound-toggle" class="sound-toggle" onclick="toggleHeroSound()" data-i18n-attr="aria-label:sound_on_label" aria-label="Включить звук">
         <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
           <line x1="23" y1="9" x2="17" y2="15"></line>
@@ -582,75 +609,75 @@
 
 <section>
   <div class="container">
-    <h2>О производстве</h2>
+    <h2 data-i18n="about_h2">О производстве</h2>
     <div class="about-grid">
       <div class="card">
-        <div class="num">10+ лет</div>
-        <div>опыта в пошиве изделий для бизнеса</div>
+        <div class="num" data-i18n="about1_num">10+ лет</div>
+        <div data-i18n="about1_text">опыта в пошиве изделий для бизнеса</div>
       </div>
       <div class="card">
-        <div class="num">20+ единиц</div>
-        <div>швейного и раскройного оборудования</div>
+        <div class="num" data-i18n="about2_num">20+ единиц</div>
+        <div data-i18n="about2_text">швейного и раскройного оборудования</div>
       </div>
       <div class="card">
-        <div class="num">300 м²</div>
-        <div>собственного производственного цеха</div>
+        <div class="num" data-i18n="about3_num">300 м²</div>
+        <div data-i18n="about3_text">собственного производственного цеха</div>
       </div>
     </div>
-    <p style="text-align:center; margin-top:24px; font-size:13px; color:#999;">* цифры примерные, для готового прототипа — замените на реальные данные производства</p>
+    <p style="text-align:center; margin-top:24px; font-size:13px; color:#999;" data-i18n="about_note">* цифры примерные, для готового прототипа — замените на реальные данные производства</p>
   </div>
 </section>
 
 <section class="bg-light">
   <div class="container">
-    <h2>Что мы шьём</h2>
+    <h2 data-i18n="products_h2">Что мы шьём</h2>
     <div class="products-grid">
-      <div class="product-card"><div class="img-wrap"><img src="assets/products/sumki.jpg" alt="Сумки на заказ"></div><h3>Сумки</h3><p>из кожи, экокожи и плотного текстиля</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="assets/products/ryukzaki.jpg" alt="Рюкзаки на заказ"></div><h3>Рюкзаки</h3><p>деловые, спортивные, промо-модели</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="assets/products/shoppery.jpg" alt="Шопперы на заказ"></div><h3>Шопперы</h3><p>тканевые и брендированные</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="assets/products/kosmetichki.jpg" alt="Косметички на заказ"></div><h3>Косметички</h3><p>любых форм и размеров</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="assets/products/chekhly.jpg" alt="Чехлы на заказ"></div><h3>Чехлы</h3><p>для техники и аксессуаров</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="assets/products/organayzery.jpg" alt="Органайзеры на заказ"></div><h3>Органайзеры</h3><p>для дома, офиса, путешествий</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="assets/products/korporativnaya.jpg" alt="Корпоративная продукция — набор изделий"></div><h3>Корпоративная продукция</h3><p>подарки и мерч для сотрудников и клиентов</p></div>
-      <div class="product-card"><div class="img-wrap"><img src="assets/products/individualnye.jpg" alt="Индивидуальные изделия на заказ"></div><h3>Индивидуальные изделия</h3><p>по вашему техническому заданию</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="assets/products/sumki.jpg" alt="Сумки на заказ" data-i18n-attr="alt:product1_alt"></div><h3 data-i18n="product1_h3">Сумки</h3><p data-i18n="product1_p">из кожи, экокожи и плотного текстиля</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="assets/products/ryukzaki.jpg" alt="Рюкзаки на заказ" data-i18n-attr="alt:product2_alt"></div><h3 data-i18n="product2_h3">Рюкзаки</h3><p data-i18n="product2_p">деловые, спортивные, промо-модели</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="assets/products/shoppery.jpg" alt="Шопперы на заказ" data-i18n-attr="alt:product3_alt"></div><h3 data-i18n="product3_h3">Шопперы</h3><p data-i18n="product3_p">тканевые и брендированные</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="assets/products/kosmetichki.jpg" alt="Косметички на заказ" data-i18n-attr="alt:product4_alt"></div><h3 data-i18n="product4_h3">Косметички</h3><p data-i18n="product4_p">любых форм и размеров</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="assets/products/chekhly.jpg" alt="Чехлы на заказ" data-i18n-attr="alt:product5_alt"></div><h3 data-i18n="product5_h3">Чехлы</h3><p data-i18n="product5_p">для техники и аксессуаров</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="assets/products/organayzery.jpg" alt="Органайзеры на заказ" data-i18n-attr="alt:product6_alt"></div><h3 data-i18n="product6_h3">Органайзеры</h3><p data-i18n="product6_p">для дома, офиса, путешествий</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="assets/products/korporativnaya.jpg" alt="Корпоративная продукция — набор изделий" data-i18n-attr="alt:product7_alt"></div><h3 data-i18n="product7_h3">Корпоративная продукция</h3><p data-i18n="product7_p">подарки и мерч для сотрудников и клиентов</p></div>
+      <div class="product-card"><div class="img-wrap"><img src="assets/products/individualnye.jpg" alt="Индивидуальные изделия на заказ" data-i18n-attr="alt:product8_alt"></div><h3 data-i18n="product8_h3">Индивидуальные изделия</h3><p data-i18n="product8_p">по вашему техническому заданию</p></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <span class="section-kicker">Почему выбирают нас</span>
-    <h2>Полный цикл, без компромиссов</h2>
+    <span class="section-kicker" data-i18n="why_kicker">Почему выбирают нас</span>
+    <h2 data-i18n="why_h2">Полный цикл, без компромиссов</h2>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-num">01</div>
-        <h3>Полный цикл под одной крышей</h3>
-        <p>От разработки макета до упаковки готовой партии — не нужно искать разных подрядчиков.</p>
+        <h3 data-i18n="why1_h3">Полный цикл под одной крышей</h3>
+        <p data-i18n="why1_p">От разработки макета до упаковки готовой партии — не нужно искать разных подрядчиков.</p>
       </div>
       <div class="why-card">
         <div class="why-num">02</div>
-        <h3>Работаем с любым форматом ТЗ</h3>
-        <p>Присылаете фото, эскиз, образец или готовые лекала — даже без технической документации разберёмся и предложим решение.</p>
+        <h3 data-i18n="why2_h3">Работаем с любым форматом ТЗ</h3>
+        <p data-i18n="why2_p">Присылаете фото, эскиз, образец или готовые лекала — даже без технической документации разберёмся и предложим решение.</p>
       </div>
       <div class="why-card">
         <div class="why-num">03</div>
-        <h3>Небольшие партии — от 50 изделий</h3>
-        <p>Не обязательно сразу заказывать тысячи штук — можно начать с небольшой партии.</p>
+        <h3 data-i18n="why3_h3">Небольшие партии — от 50 изделий</h3>
+        <p data-i18n="why3_p">Не обязательно сразу заказывать тысячи штук — можно начать с небольшой партии.</p>
       </div>
       <div class="why-card">
         <div class="why-num">04</div>
-        <h3>Сначала образец, потом партия</h3>
-        <p>Вы видите и утверждаете готовое изделие до запуска основного производства.</p>
+        <h3 data-i18n="why4_h3">Сначала образец, потом партия</h3>
+        <p data-i18n="why4_p">Вы видите и утверждаете готовое изделие до запуска основного производства.</p>
       </div>
       <div class="why-card">
         <div class="why-num">05</div>
-        <h3>Контроль качества</h3>
-        <p>Проверяем качество материалов и фурнитуры перед началом производства, а качество пошива контролируем на каждом этапе изготовления — не только при финальной проверке.</p>
+        <h3 data-i18n="why5_h3">Контроль качества</h3>
+        <p data-i18n="why5_p">Проверяем качество материалов и фурнитуры перед началом производства, а качество пошива контролируем на каждом этапе изготовления — не только при финальной проверке.</p>
       </div>
       <div class="why-card">
         <div class="why-num">06</div>
-        <h3>Классика и креатив</h3>
-        <p>Шьём и строгие деловые модели, и нестандартные, творческие идеи — воплощаем ваш дизайн, а не только типовые образцы.</p>
+        <h3 data-i18n="why6_h3">Классика и креатив</h3>
+        <p data-i18n="why6_p">Шьём и строгие деловые модели, и нестандартные, творческие идеи — воплощаем ваш дизайн, а не только типовые образцы.</p>
       </div>
     </div>
   </div>
@@ -658,21 +685,21 @@
 
 <section class="bg-light">
   <div class="container">
-    <span class="section-kicker">В деле, а не на витрине</span>
-    <h2>Изделия в жизни</h2>
-    <p class="section-lede">Наши изделия шьются не для каталога — ими пользуются каждый день: в городе, на встречах, в дороге. Так они и должны выглядеть на фото.</p>
+    <span class="section-kicker" data-i18n="life_kicker">В деле, а не на витрине</span>
+    <h2 data-i18n="life_h2">Изделия в жизни</h2>
+    <p class="section-lede" data-i18n="life_lede">Наши изделия шьются не для каталога — ими пользуются каждый день: в городе, на встречах, в дороге. Так они и должны выглядеть на фото.</p>
     <div class="life-grid">
       <div class="life-card">
-        <div class="life-photo"><img class="photo-wake" src="assets/life/backpack-closeup.jpg" alt="Рюкзак на заказ крупным планом на плече в повседневном использовании" loading="lazy"></div>
-        <div class="life-caption"><h3>Рюкзак в городе</h3><p>Лёгкий, практичный, с местом под ноутбук и мелочи — для тех, кто весь день в движении.</p></div>
+        <div class="life-photo"><img class="photo-wake" src="assets/life/backpack-closeup.jpg" alt="Рюкзак на заказ крупным планом на плече в повседневном использовании" data-i18n-attr="alt:life1_alt" loading="lazy"></div>
+        <div class="life-caption"><h3 data-i18n="life1_h3">Рюкзак в городе</h3><p data-i18n="life1_p">Лёгкий, практичный, с местом под ноутбук и мелочи — для тех, кто весь день в движении.</p></div>
       </div>
       <div class="life-card">
-        <div class="life-photo"><img class="photo-wake" src="assets/life/satchel-steps.jpg" alt="Деловая сумка-сэтчел на заказ в повседневном использовании" loading="lazy"></div>
-        <div class="life-caption"><h3>Сумка на встречу</h3><p>Строгая форма держит вид весь день — от переговоров до конца рабочего дня.</p></div>
+        <div class="life-photo"><img class="photo-wake" src="assets/life/satchel-steps.jpg" alt="Деловая сумка-сэтчел на заказ в повседневном использовании" data-i18n-attr="alt:life2_alt" loading="lazy"></div>
+        <div class="life-caption"><h3 data-i18n="life2_h3">Сумка на встречу</h3><p data-i18n="life2_p">Строгая форма держит вид весь день — от переговоров до конца рабочего дня.</p></div>
       </div>
       <div class="life-card">
-        <div class="life-photo"><img class="photo-wake" src="assets/life/cosmetic-inuse.jpg" alt="Косметичка-органайзер на заказ с раздельными отделениями для косметики и флаконов" loading="lazy"></div>
-        <div class="life-caption"><h3>Всё разложено по местам</h3><p>Карман под кисти, сетка под уход, отдельный чехол для флаконов — каждой вещи своё место.</p></div>
+        <div class="life-photo"><img class="photo-wake" src="assets/life/cosmetic-inuse.jpg" alt="Косметичка-органайзер на заказ с раздельными отделениями для косметики и флаконов" data-i18n-attr="alt:life3_alt" loading="lazy"></div>
+        <div class="life-caption"><h3 data-i18n="life3_h3">Всё разложено по местам</h3><p data-i18n="life3_p">Карман под кисти, сетка под уход, отдельный чехол для флаконов — каждой вещи своё место.</p></div>
       </div>
     </div>
   </div>
@@ -680,8 +707,8 @@
 
 <section>
   <div class="container">
-    <span class="section-kicker">Кто делает ваш заказ</span>
-    <h2>Наша команда</h2>
+    <span class="section-kicker" data-i18n="team_kicker">Кто делает ваш заказ</span>
+    <h2 data-i18n="team_h2">Наша команда</h2>
     <div class="team-avatars" aria-hidden="true">
       <img src="assets/team/avatars/avatar-1.jpg" alt="" loading="lazy">
       <img src="assets/team/avatars/avatar-2.jpg" alt="" loading="lazy">
@@ -689,27 +716,27 @@
       <img src="assets/team/avatars/avatar-4.jpg" alt="" loading="lazy">
       <img src="assets/team/avatars/avatar-5.jpg" alt="" loading="lazy">
     </div>
-    <p class="section-lede">Над каждым изделием работает не один человек, а слаженная цепочка специалистов — от разработки лекал до упаковки готовой партии.</p>
+    <p class="section-lede" data-i18n="team_lede">Над каждым изделием работает не один человек, а слаженная цепочка специалистов — от разработки лекал до упаковки готовой партии.</p>
     <div class="team-grid">
       <div class="team-card">
-        <div class="team-photo"><img class="photo-wake" src="assets/team/team-1-konstruktor.jpg" alt="Конструктор разрабатывает лекало изделия" loading="lazy"></div>
-        <div class="team-info"><div class="team-role">Конструктор</div><div class="team-desc">Разработка конструкции изделия, лекал и технической документации для производства.</div></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-1-konstruktor.jpg" alt="Конструктор разрабатывает лекало изделия" data-i18n-attr="alt:team1_alt" loading="lazy"></div>
+        <div class="team-info"><div class="team-role" data-i18n="team1_role">Конструктор</div><div class="team-desc" data-i18n="team1_desc">Разработка конструкции изделия, лекал и технической документации для производства.</div></div>
       </div>
       <div class="team-card">
-        <div class="team-photo"><img class="photo-wake" src="assets/team/team-2-tekhnolog.jpg" alt="Технолог проверяет посадку изделия на образце" loading="lazy"></div>
-        <div class="team-info"><div class="team-role">Технолог</div><div class="team-desc">Разработка технологического процесса, подготовка изделия и запуск в производство.</div></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-2-tekhnolog.jpg" alt="Технолог проверяет посадку изделия на образце" data-i18n-attr="alt:team2_alt" loading="lazy"></div>
+        <div class="team-info"><div class="team-role" data-i18n="team2_role">Технолог</div><div class="team-desc" data-i18n="team2_desc">Разработка технологического процесса, подготовка изделия и запуск в производство.</div></div>
       </div>
       <div class="team-card">
-        <div class="team-photo"><img class="photo-wake" src="assets/team/team-3-shveya.jpg" alt="Швея собирает изделие на производстве" loading="lazy"></div>
-        <div class="team-info"><div class="team-role">Швея</div><div class="team-desc">Пошив и сборка изделий с соблюдением технологии производства и требований к качеству.</div></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-3-shveya.jpg" alt="Швея собирает изделие на производстве" data-i18n-attr="alt:team3_alt" loading="lazy"></div>
+        <div class="team-info"><div class="team-role" data-i18n="team3_role">Швея</div><div class="team-desc" data-i18n="team3_desc">Пошив и сборка изделий с соблюдением технологии производства и требований к качеству.</div></div>
       </div>
       <div class="team-card">
-        <div class="team-photo"><img class="photo-wake" src="assets/team/team-4-otk.jpg" alt="Контроль качества готового изделия" loading="lazy"></div>
-        <div class="team-info"><div class="team-role">Контроль качества</div><div class="team-desc">Проверка качества на всех этапах производства — от входного контроля материалов до контроля готового изделия.</div></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-4-otk.jpg" alt="Контроль качества готового изделия" data-i18n-attr="alt:team4_alt" loading="lazy"></div>
+        <div class="team-info"><div class="team-role" data-i18n="team4_role">Контроль качества</div><div class="team-desc" data-i18n="team4_desc">Проверка качества на всех этапах производства — от входного контроля материалов до контроля готового изделия.</div></div>
       </div>
       <div class="team-card">
-        <div class="team-photo"><img class="photo-wake" src="assets/team/team-5-upakovka.jpg" alt="Упаковка готовых изделий к отгрузке" loading="lazy"></div>
-        <div class="team-info"><div class="team-role">Упаковка</div><div class="team-desc">Подготовка готовых изделий к отгрузке, упаковка партий.</div></div>
+        <div class="team-photo"><img class="photo-wake" src="assets/team/team-5-upakovka.jpg" alt="Упаковка готовых изделий к отгрузке" data-i18n-attr="alt:team5_alt" loading="lazy"></div>
+        <div class="team-info"><div class="team-role" data-i18n="team5_role">Упаковка</div><div class="team-desc" data-i18n="team5_desc">Подготовка готовых изделий к отгрузке, упаковка партий.</div></div>
       </div>
     </div>
   </div>
@@ -717,50 +744,50 @@
 
 <section>
   <div class="container">
-    <span class="section-kicker">Два направления</span>
-    <h2>Классика и креатив в одном производстве</h2>
-    <p class="section-lede">Шьём и то, и другое на одних мощностях — разница только в техническом задании.</p>
+    <span class="section-kicker" data-i18n="directions_kicker">Два направления</span>
+    <h2 data-i18n="directions_h2">Классика и креатив в одном производстве</h2>
+    <p class="section-lede" data-i18n="directions_lede">Шьём и то, и другое на одних мощностях — разница только в техническом задании.</p>
 
     <div class="direction-block">
       <div class="direction-copy">
-        <span class="direction-tag">Классика</span>
-        <h3>Строгая форма, которая не выходит из моды</h3>
-        <p>Лаконичный крой, спокойные пропорции, качественная фурнитура. То, что выбирают для деловых подарков, корпоративных коллекций и повседневных моделей — вещь работает на бренд, не отвлекая на себя внимание.</p>
-        <p>Кожа, экокожа, плотный текстиль — под ваше ТЗ и бюджет партии.</p>
+        <span class="direction-tag" data-i18n="classic_tag">Классика</span>
+        <h3 data-i18n="classic_h3">Строгая форма, которая не выходит из моды</h3>
+        <p data-i18n="classic_p1">Лаконичный крой, спокойные пропорции, качественная фурнитура. То, что выбирают для деловых подарков, корпоративных коллекций и повседневных моделей — вещь работает на бренд, не отвлекая на себя внимание.</p>
+        <p data-i18n="classic_p2">Кожа, экокожа, плотный текстиль — под ваше ТЗ и бюджет партии.</p>
       </div>
-      <div class="direction-photo"><img src="assets/products/classic-tote.jpg" alt="Классическая структурная сумка-тоут из плотной кожи"></div>
+      <div class="direction-photo"><img src="assets/products/classic-tote.jpg" alt="Классическая структурная сумка-тоут из плотной кожи" data-i18n-attr="alt:classic_alt"></div>
     </div>
 
     <div class="direction-block reverse">
       <div class="direction-copy">
-        <span class="direction-tag">Креатив</span>
-        <h3>Форма как высказывание</h3>
-        <p>Нестандартный крой, скульптурный объём, авторская геометрия — изделия, которые не спутать с типовым каталожным товаром. Подходит для капсульных коллекций и творческих брендов, где сама форма — часть истории.</p>
-        <p>Реализуем сложные лекала и нестандартные материалы — присылайте эскиз или референс.</p>
+        <span class="direction-tag" data-i18n="creative_tag">Креатив</span>
+        <h3 data-i18n="creative_h3">Форма как высказывание</h3>
+        <p data-i18n="creative_p1">Нестандартный крой, скульптурный объём, авторская геометрия — изделия, которые не спутать с типовым каталожным товаром. Подходит для капсульных коллекций и творческих брендов, где сама форма — часть истории.</p>
+        <p data-i18n="creative_p2">Реализуем сложные лекала и нестандартные материалы — присылайте эскиз или референс.</p>
       </div>
-      <div class="direction-photo"><img src="assets/products/creative-sculptural.jpg" alt="Скульптурные авторские сумки нестандартной плиссированной формы"></div>
+      <div class="direction-photo"><img src="assets/products/creative-sculptural.jpg" alt="Скульптурные авторские сумки нестандартной плиссированной формы" data-i18n-attr="alt:creative_alt"></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <h2>Отзывы заказчиков</h2>
+    <h2 data-i18n="testimonials_h2">Отзывы заказчиков</h2>
     <div class="testimonials-grid">
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="quote">«Заказывали партию корпоративных рюкзаков — сделали быстро, качество швов отличное, все изделия одинаковые, без брака».</p>
-        <div class="author">Марина К.<span>пример отзыва — замените на реальный, имя/компанию</span></div>
+        <p class="quote" data-i18n="t1_quote">«Заказывали партию корпоративных рюкзаков — сделали быстро, качество швов отличное, все изделия одинаковые, без брака».</p>
+        <div class="author" data-i18n-html="t1_author">Марина К.<span>пример отзыва — замените на реальный, имя/компанию</span></div>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="quote">«Понравилось, что сначала прислали образец на согласование — ошибок в итоговой партии не было».</p>
-        <div class="author">Дмитрий, ООО «Пример»<span>пример отзыва — замените на реальный, имя/компанию</span></div>
+        <p class="quote" data-i18n="t2_quote">«Понравилось, что сначала прислали образец на согласование — ошибок в итоговой партии не было».</p>
+        <div class="author" data-i18n-html="t2_author">Дмитрий, ООО «Пример»<span>пример отзыва — замените на реальный, имя/компанию</span></div>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="quote">«Работаем уже второй год, всегда укладываются в сроки, материалы именно те, что обсуждали».</p>
-        <div class="author">Анна В.<span>пример отзыва — замените на реальный, имя/компанию</span></div>
+        <p class="quote" data-i18n="t3_quote">«Работаем уже второй год, всегда укладываются в сроки, материалы именно те, что обсуждали».</p>
+        <div class="author" data-i18n-html="t3_author">Анна В.<span>пример отзыва — замените на реальный, имя/компанию</span></div>
       </div>
     </div>
   </div>
@@ -768,35 +795,35 @@
 
 <section>
   <div class="container">
-    <h2>Как проходит работа</h2>
+    <h2 data-i18n="process_h2">Как проходит работа</h2>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><h3>Заявка</h3><p>Присылаете фото, эскиз или ТЗ — обсуждаем детали и материалы</p></div>
-      <div class="step"><div class="step-num">2</div><h3>Образец</h3><p>Шьём один экземпляр на согласование</p></div>
-      <div class="step"><div class="step-num">3</div><h3>Производство</h3><p>После утверждения запускаем производство всей партии</p></div>
-      <div class="step"><div class="step-num">4</div><h3>Упаковка и отправка</h3><p>Упаковываем и передаём готовую партию</p></div>
+      <div class="step"><div class="step-num">1</div><h3 data-i18n="step1_h3">Заявка</h3><p data-i18n="step1_p">Присылаете фото, эскиз или ТЗ — обсуждаем детали и материалы</p></div>
+      <div class="step"><div class="step-num">2</div><h3 data-i18n="step2_h3">Образец</h3><p data-i18n="step2_p">Шьём один экземпляр на согласование</p></div>
+      <div class="step"><div class="step-num">3</div><h3 data-i18n="step3_h3">Производство</h3><p data-i18n="step3_p">После утверждения запускаем производство всей партии</p></div>
+      <div class="step"><div class="step-num">4</div><h3 data-i18n="step4_h3">Упаковка и отправка</h3><p data-i18n="step4_p">Упаковываем и передаём готовую партию</p></div>
     </div>
   </div>
 </section>
 
 <section class="bg-light">
   <div class="container">
-    <h2>С какими материалами работаем</h2>
+    <h2 data-i18n="materials_h2">С какими материалами работаем</h2>
     <div class="materials-groups">
       <div class="materials-group">
-        <h3>Кожа</h3>
-        <ul><li>Натуральная</li><li>Искусственная (экокожа)</li></ul>
+        <h3 data-i18n="mat_leather_h3">Кожа</h3>
+        <ul><li data-i18n="mat_leather_1">Натуральная</li><li data-i18n="mat_leather_2">Искусственная (экокожа)</li></ul>
       </div>
       <div class="materials-group">
-        <h3>Текстиль</h3>
-        <ul><li>Плотный текстиль</li><li>Брезент</li><li>Технические ткани</li><li>Влагостойкие</li><li>Износостойкие</li></ul>
+        <h3 data-i18n="mat_textile_h3">Текстиль</h3>
+        <ul><li data-i18n="mat_textile_1">Плотный текстиль</li><li data-i18n="mat_textile_2">Брезент</li><li data-i18n="mat_textile_3">Технические ткани</li><li data-i18n="mat_textile_4">Влагостойкие</li><li data-i18n="mat_textile_5">Износостойкие</li></ul>
       </div>
       <div class="materials-group">
-        <h3>Дополнительные материалы</h3>
-        <ul><li>Подкладочные</li><li>Укрепляющие</li></ul>
+        <h3 data-i18n="mat_extra_h3">Дополнительные материалы</h3>
+        <ul><li data-i18n="mat_extra_1">Подкладочные</li><li data-i18n="mat_extra_2">Укрепляющие</li></ul>
       </div>
       <div class="materials-group">
-        <h3>Фурнитура</h3>
-        <ul><li>Молнии</li><li>Карабины</li><li>Стропы</li></ul>
+        <h3 data-i18n="mat_hardware_h3">Фурнитура</h3>
+        <ul><li data-i18n="mat_hardware_1">Молнии</li><li data-i18n="mat_hardware_2">Карабины</li><li data-i18n="mat_hardware_3">Стропы</li></ul>
       </div>
     </div>
   </div>
@@ -804,65 +831,65 @@
 
 <section>
   <div class="container">
-    <h2>Частые вопросы</h2>
+    <h2 data-i18n="faq_h2">Частые вопросы</h2>
     <details class="faq-item" open>
-      <summary><h3>Какой минимальный тираж?</h3></summary>
-      <p>От 50 изделий в партии. Для отдельных моделей возможны исключения — условия обсуждаем индивидуально.</p>
+      <summary><h3 data-i18n="faq1_q">Какой минимальный тираж?</h3></summary>
+      <p data-i18n="faq1_a">От 50 изделий в партии. Для отдельных моделей возможны исключения — условия обсуждаем индивидуально.</p>
     </details>
     <details class="faq-item">
-      <summary><h3>Можно ли заказать изделие только по фотографии?</h3></summary>
-      <p>Да. Разработаем лекала самостоятельно на основе фотографии, эскиза или образца.</p>
+      <summary><h3 data-i18n="faq2_q">Можно ли заказать изделие только по фотографии?</h3></summary>
+      <p data-i18n="faq2_a">Да. Разработаем лекала самостоятельно на основе фотографии, эскиза или образца.</p>
     </details>
     <details class="faq-item">
-      <summary><h3>Сколько занимает производство партии?</h3></summary>
-      <p>Срок зависит от объёма и сложности изделия. Точный срок согласовываем после утверждения образца.</p>
+      <summary><h3 data-i18n="faq3_q">Сколько занимает производство партии?</h3></summary>
+      <p data-i18n="faq3_a">Срок зависит от объёма и сложности изделия. Точный срок согласовываем после утверждения образца.</p>
     </details>
     <details class="faq-item">
-      <summary><h3>Можно ли внести изменения после старта производства?</h3></summary>
-      <p>Изменения можно внести на этапе согласования образца. После запуска партии возможность изменений обсуждается отдельно.</p>
+      <summary><h3 data-i18n="faq4_q">Можно ли внести изменения после старта производства?</h3></summary>
+      <p data-i18n="faq4_a">Изменения можно внести на этапе согласования образца. После запуска партии возможность изменений обсуждается отдельно.</p>
     </details>
   </div>
 </section>
 
 <section class="calc-section" id="calculator">
   <div class="container">
-    <h2>Рассчитайте стоимость заказа</h2>
-    <p class="calc-intro">Выберите параметры</p>
+    <h2 data-i18n="calc_h2">Рассчитайте стоимость заказа</h2>
+    <p class="calc-intro" data-i18n="calc_intro">Выберите параметры</p>
     <div class="calc-box">
-      <label for="calc-type">Что нужно пошить</label>
+      <label for="calc-type" data-i18n="calc_type_label">Что нужно пошить</label>
       <select id="calc-type">
-        <option value="800">Сумка</option>
-        <option value="1200">Рюкзак</option>
-        <option value="350">Шоппер</option>
-        <option value="400">Косметичка</option>
-        <option value="300">Чехол</option>
-        <option value="500">Органайзер</option>
-        <option value="600">Корпоративная продукция</option>
+        <option value="800" data-i18n="opt_bag">Сумка</option>
+        <option value="1200" data-i18n="opt_backpack">Рюкзак</option>
+        <option value="350" data-i18n="opt_shopper">Шоппер</option>
+        <option value="400" data-i18n="opt_cosmetic">Косметичка</option>
+        <option value="300" data-i18n="opt_case">Чехол</option>
+        <option value="500" data-i18n="opt_organizer">Органайзер</option>
+        <option value="600" data-i18n="opt_corporate">Корпоративная продукция</option>
       </select>
 
-      <label for="calc-material">Материал</label>
+      <label for="calc-material" data-i18n="calc_material_label">Материал</label>
       <select id="calc-material">
-        <option value="1.0">Текстиль / брезент</option>
-        <option value="1.3">Искусственная кожа (экокожа)</option>
-        <option value="2.2">Натуральная кожа</option>
-        <option value="1.15">Техническая ткань</option>
+        <option value="1.0" data-i18n="opt_mat_textile">Текстиль / брезент</option>
+        <option value="1.3" data-i18n="opt_mat_ecoleather">Искусственная кожа (экокожа)</option>
+        <option value="2.2" data-i18n="opt_mat_leather">Натуральная кожа</option>
+        <option value="1.15" data-i18n="opt_mat_tech">Техническая ткань</option>
       </select>
 
-      <label for="calc-qty">Количество изделий (от 50 шт)</label>
+      <label for="calc-qty" data-i18n="calc_qty_label">Количество изделий (от 50 шт)</label>
       <div class="qty-stepper">
-        <button type="button" class="qty-btn" onclick="changeQty(-10)" aria-label="Уменьшить количество">−</button>
+        <button type="button" class="qty-btn" onclick="changeQty(-10)" data-i18n-attr="aria-label:qty_minus_label" aria-label="Уменьшить количество">−</button>
         <input type="number" id="calc-qty" min="50" value="50">
-        <button type="button" class="qty-btn" onclick="changeQty(10)" aria-label="Увеличить количество">+</button>
+        <button type="button" class="qty-btn" onclick="changeQty(10)" data-i18n-attr="aria-label:qty_plus_label" aria-label="Увеличить количество">+</button>
       </div>
-      <p class="qty-hint">− уменьшает количество, + увеличивает. Можно ввести число вручную.</p>
+      <p class="qty-hint" data-i18n="qty_hint">− уменьшает количество, + увеличивает. Можно ввести число вручную.</p>
 
-      <button type="button" class="calc-btn" onclick="calculatePrice()">Рассчитать стоимость</button>
+      <button type="button" class="calc-btn" onclick="calculatePrice()" data-i18n="calc_btn">Рассчитать стоимость</button>
 
       <div id="calc-result" class="calc-result" style="display:none;">
-        <div class="calc-result-label">Ориентировочная стоимость партии</div>
+        <div class="calc-result-label" data-i18n="calc_result_label">Ориентировочная стоимость партии</div>
         <div class="calc-result-price" id="calc-price-value"></div>
-        <p class="calc-result-note">Это предварительный расчёт. Точная цена зависит от сложности модели и уточняется после согласования образца.</p>
-        <a href="#order" class="cta-btn calc-cta">Отправить заявку на точный расчёт</a>
+        <p class="calc-result-note" data-i18n="calc_result_note">Это предварительный расчёт. Точная цена зависит от сложности модели и уточняется после согласования образца.</p>
+        <a href="#order" class="cta-btn calc-cta" data-i18n="calc_cta">Отправить заявку на точный расчёт</a>
       </div>
     </div>
   </div>
@@ -870,7 +897,7 @@
 
 <section class="order-section" id="order">
   <div class="container">
-    <h2>Получить точный расчёт</h2>
+    <h2 data-i18n="order_h2">Получить точный расчёт</h2>
 
     <div class="contacts-row">
       <a href="tel:+79991234567" class="contact-item">
@@ -883,53 +910,443 @@
       </a>
       <a href="https://t.me/shveypro" class="contact-item">
         <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
-        <span>@shveypro в Telegram</span>
+        <span data-i18n="contact_telegram">@shveypro в Telegram</span>
       </a>
       <a href="https://wa.me/79991234567" class="contact-item">
         <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
         <span>WhatsApp</span>
       </a>
     </div>
-    <p class="contacts-note">* контакты примерные (включая email для формы заявки) — замените на реальные перед публикацией</p>
+    <p class="contacts-note" data-i18n="contacts_note">* контакты примерные (включая email для формы заявки) — замените на реальные перед публикацией</p>
 
     <form class="order-form" id="order-form" onsubmit="return submitOrderForm(event)">
-      <input type="text" name="name" placeholder="Ваше имя" required>
-      <input type="tel" name="phone" placeholder="Телефон или Telegram" required>
-      <input type="text" name="task" placeholder="Что нужно пошить" required>
-      <input type="number" name="qty" placeholder="Количество (от 50 шт)" min="50">
+      <input type="text" name="name" placeholder="Ваше имя" data-i18n-attr="placeholder:form_name" required>
+      <input type="tel" name="phone" placeholder="Телефон или Telegram" data-i18n-attr="placeholder:form_phone" required>
+      <input type="text" name="task" placeholder="Что нужно пошить" data-i18n-attr="placeholder:form_task" required>
+      <input type="number" name="qty" placeholder="Количество (от 50 шт)" data-i18n-attr="placeholder:form_qty" min="50">
       <label class="file-label">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:6px;"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Прикрепить фото / эскиз / образец
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:6px;"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg><span data-i18n="form_file_label">Прикрепить фото / эскиз / образец</span>
         <input type="file" name="attachment" style="display:none">
       </label>
       <input type="hidden" name="_subject" value="Новая заявка с сайта ШвейПро">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
-      <button type="submit" id="order-submit-btn">Получить точный расчёт</button>
+      <button type="submit" id="order-submit-btn" data-i18n="order_submit_btn">Получить точный расчёт</button>
     </form>
-    <div class="order-success" id="order-success">✅ Спасибо! Заявка отправлена. Мы свяжемся с вами для уточнения деталей.</div>
-    <div class="order-error" id="order-error" style="display:none; color:#97452B; margin-top:12px;">Не получилось отправить заявку. Напишите нам напрямую в <a href="https://t.me/shveypro">Telegram</a> или <a href="https://wa.me/79991234567">WhatsApp</a>.</div>
-    <a href="#top" class="back-to-top">↑ Вернуться к началу</a>
+    <div class="order-success" id="order-success" data-i18n="order_success">✅ Спасибо! Заявка отправлена. Мы свяжемся с вами для уточнения деталей.</div>
+    <div class="order-error" id="order-error" style="display:none; color:#97452B; margin-top:12px;" data-i18n-html="order_error">Не получилось отправить заявку. Напишите нам напрямую в <a href="https://t.me/shveypro">Telegram</a> или <a href="https://wa.me/79991234567">WhatsApp</a>.</div>
+    <a href="#top" class="back-to-top" data-i18n="back_to_top">↑ Вернуться к началу</a>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <p>ШвейПро — пошив изделий на заказ для бизнеса</p>
-    <p>+7 (999) 123-45-67 · zakaz@shveypro.ru · @shveypro в Telegram</p>
+    <p data-i18n="footer_line1">ШвейПро — пошив изделий на заказ для бизнеса</p>
+    <p>+7 (999) 123-45-67 · zakaz@shveypro.ru · <span data-i18n="contact_telegram">@shveypro в Telegram</span></p>
   </div>
 </footer>
 
 <script>
+var translations = {
+  ru: {
+    title: 'ШвейПро — пошив сумок, рюкзаков и текстильных изделий на заказ для бизнеса',
+    header_cta: 'Рассчитать стоимость',
+    hero_eyebrow: 'Производство на заказ · для бизнеса',
+    hero_h1: 'Пошив сумок, рюкзаков и <em>текстильных изделий</em> на заказ для бизнеса',
+    hero_sub: 'От макета до упакованной партии — полный цикл производства на собственных мощностях. Работаем по фото, эскизу, образцу или готовым лекалам.',
+    hero_cta: 'Рассчитать стоимость заказа',
+    hero_stat1_num: 'от 50 шт',
+    hero_stat1_label: 'минимальная партия',
+    hero_stat2_num: 'полный цикл',
+    hero_stat2_label: 'от макета до упаковки',
+    hero_stat3_num: 'образец',
+    hero_stat3_label: 'перед запуском партии',
+    hero_video_aria: 'Промо-видео ШвейПро с музыкой',
+    sound_on_label: 'Включить звук',
+    sound_off_label: 'Выключить звук',
+    about_h2: 'О производстве',
+    about1_num: '10+ лет',
+    about1_text: 'опыта в пошиве изделий для бизнеса',
+    about2_num: '20+ единиц',
+    about2_text: 'швейного и раскройного оборудования',
+    about3_num: '300 м²',
+    about3_text: 'собственного производственного цеха',
+    about_note: '* цифры примерные, для готового прототипа — замените на реальные данные производства',
+    products_h2: 'Что мы шьём',
+    product1_alt: 'Сумки на заказ', product1_h3: 'Сумки', product1_p: 'из кожи, экокожи и плотного текстиля',
+    product2_alt: 'Рюкзаки на заказ', product2_h3: 'Рюкзаки', product2_p: 'деловые, спортивные, промо-модели',
+    product3_alt: 'Шопперы на заказ', product3_h3: 'Шопперы', product3_p: 'тканевые и брендированные',
+    product4_alt: 'Косметички на заказ', product4_h3: 'Косметички', product4_p: 'любых форм и размеров',
+    product5_alt: 'Чехлы на заказ', product5_h3: 'Чехлы', product5_p: 'для техники и аксессуаров',
+    product6_alt: 'Органайзеры на заказ', product6_h3: 'Органайзеры', product6_p: 'для дома, офиса, путешествий',
+    product7_alt: 'Корпоративная продукция — набор изделий', product7_h3: 'Корпоративная продукция', product7_p: 'подарки и мерч для сотрудников и клиентов',
+    product8_alt: 'Индивидуальные изделия на заказ', product8_h3: 'Индивидуальные изделия', product8_p: 'по вашему техническому заданию',
+    why_kicker: 'Почему выбирают нас',
+    why_h2: 'Полный цикл, без компромиссов',
+    why1_h3: 'Полный цикл под одной крышей', why1_p: 'От разработки макета до упаковки готовой партии — не нужно искать разных подрядчиков.',
+    why2_h3: 'Работаем с любым форматом ТЗ', why2_p: 'Присылаете фото, эскиз, образец или готовые лекала — даже без технической документации разберёмся и предложим решение.',
+    why3_h3: 'Небольшие партии — от 50 изделий', why3_p: 'Не обязательно сразу заказывать тысячи штук — можно начать с небольшой партии.',
+    why4_h3: 'Сначала образец, потом партия', why4_p: 'Вы видите и утверждаете готовое изделие до запуска основного производства.',
+    why5_h3: 'Контроль качества', why5_p: 'Проверяем качество материалов и фурнитуры перед началом производства, а качество пошива контролируем на каждом этапе изготовления — не только при финальной проверке.',
+    why6_h3: 'Классика и креатив', why6_p: 'Шьём и строгие деловые модели, и нестандартные, творческие идеи — воплощаем ваш дизайн, а не только типовые образцы.',
+    life_kicker: 'В деле, а не на витрине',
+    life_h2: 'Изделия в жизни',
+    life_lede: 'Наши изделия шьются не для каталога — ими пользуются каждый день: в городе, на встречах, в дороге. Так они и должны выглядеть на фото.',
+    life1_alt: 'Рюкзак на заказ крупным планом на плече в повседневном использовании', life1_h3: 'Рюкзак в городе', life1_p: 'Лёгкий, практичный, с местом под ноутбук и мелочи — для тех, кто весь день в движении.',
+    life2_alt: 'Деловая сумка-сэтчел на заказ в повседневном использовании', life2_h3: 'Сумка на встречу', life2_p: 'Строгая форма держит вид весь день — от переговоров до конца рабочего дня.',
+    life3_alt: 'Косметичка-органайзер на заказ с раздельными отделениями для косметики и флаконов', life3_h3: 'Всё разложено по местам', life3_p: 'Карман под кисти, сетка под уход, отдельный чехол для флаконов — каждой вещи своё место.',
+    team_kicker: 'Кто делает ваш заказ',
+    team_h2: 'Наша команда',
+    team_lede: 'Над каждым изделием работает не один человек, а слаженная цепочка специалистов — от разработки лекал до упаковки готовой партии.',
+    team1_alt: 'Конструктор разрабатывает лекало изделия', team1_role: 'Конструктор', team1_desc: 'Разработка конструкции изделия, лекал и технической документации для производства.',
+    team2_alt: 'Технолог проверяет посадку изделия на образце', team2_role: 'Технолог', team2_desc: 'Разработка технологического процесса, подготовка изделия и запуск в производство.',
+    team3_alt: 'Швея собирает изделие на производстве', team3_role: 'Швея', team3_desc: 'Пошив и сборка изделий с соблюдением технологии производства и требований к качеству.',
+    team4_alt: 'Контроль качества готового изделия', team4_role: 'Контроль качества', team4_desc: 'Проверка качества на всех этапах производства — от входного контроля материалов до контроля готового изделия.',
+    team5_alt: 'Упаковка готовых изделий к отгрузке', team5_role: 'Упаковка', team5_desc: 'Подготовка готовых изделий к отгрузке, упаковка партий.',
+    directions_kicker: 'Два направления',
+    directions_h2: 'Классика и креатив в одном производстве',
+    directions_lede: 'Шьём и то, и другое на одних мощностях — разница только в техническом задании.',
+    classic_tag: 'Классика', classic_h3: 'Строгая форма, которая не выходит из моды',
+    classic_p1: 'Лаконичный крой, спокойные пропорции, качественная фурнитура. То, что выбирают для деловых подарков, корпоративных коллекций и повседневных моделей — вещь работает на бренд, не отвлекая на себя внимание.',
+    classic_p2: 'Кожа, экокожа, плотный текстиль — под ваше ТЗ и бюджет партии.',
+    classic_alt: 'Классическая структурная сумка-тоут из плотной кожи',
+    creative_tag: 'Креатив', creative_h3: 'Форма как высказывание',
+    creative_p1: 'Нестандартный крой, скульптурный объём, авторская геометрия — изделия, которые не спутать с типовым каталожным товаром. Подходит для капсульных коллекций и творческих брендов, где сама форма — часть истории.',
+    creative_p2: 'Реализуем сложные лекала и нестандартные материалы — присылайте эскиз или референс.',
+    creative_alt: 'Скульптурные авторские сумки нестандартной плиссированной формы',
+    testimonials_h2: 'Отзывы заказчиков',
+    t1_quote: '«Заказывали партию корпоративных рюкзаков — сделали быстро, качество швов отличное, все изделия одинаковые, без брака».',
+    t1_author: 'Марина К.<span>пример отзыва — замените на реальный, имя/компанию</span>',
+    t2_quote: '«Понравилось, что сначала прислали образец на согласование — ошибок в итоговой партии не было».',
+    t2_author: 'Дмитрий, ООО «Пример»<span>пример отзыва — замените на реальный, имя/компанию</span>',
+    t3_quote: '«Работаем уже второй год, всегда укладываются в сроки, материалы именно те, что обсуждали».',
+    t3_author: 'Анна В.<span>пример отзыва — замените на реальный, имя/компанию</span>',
+    process_h2: 'Как проходит работа',
+    step1_h3: 'Заявка', step1_p: 'Присылаете фото, эскиз или ТЗ — обсуждаем детали и материалы',
+    step2_h3: 'Образец', step2_p: 'Шьём один экземпляр на согласование',
+    step3_h3: 'Производство', step3_p: 'После утверждения запускаем производство всей партии',
+    step4_h3: 'Упаковка и отправка', step4_p: 'Упаковываем и передаём готовую партию',
+    materials_h2: 'С какими материалами работаем',
+    mat_leather_h3: 'Кожа', mat_leather_1: 'Натуральная', mat_leather_2: 'Искусственная (экокожа)',
+    mat_textile_h3: 'Текстиль', mat_textile_1: 'Плотный текстиль', mat_textile_2: 'Брезент', mat_textile_3: 'Технические ткани', mat_textile_4: 'Влагостойкие', mat_textile_5: 'Износостойкие',
+    mat_extra_h3: 'Дополнительные материалы', mat_extra_1: 'Подкладочные', mat_extra_2: 'Укрепляющие',
+    mat_hardware_h3: 'Фурнитура', mat_hardware_1: 'Молнии', mat_hardware_2: 'Карабины', mat_hardware_3: 'Стропы',
+    faq_h2: 'Частые вопросы',
+    faq1_q: 'Какой минимальный тираж?', faq1_a: 'От 50 изделий в партии. Для отдельных моделей возможны исключения — условия обсуждаем индивидуально.',
+    faq2_q: 'Можно ли заказать изделие только по фотографии?', faq2_a: 'Да. Разработаем лекала самостоятельно на основе фотографии, эскиза или образца.',
+    faq3_q: 'Сколько занимает производство партии?', faq3_a: 'Срок зависит от объёма и сложности изделия. Точный срок согласовываем после утверждения образца.',
+    faq4_q: 'Можно ли внести изменения после старта производства?', faq4_a: 'Изменения можно внести на этапе согласования образца. После запуска партии возможность изменений обсуждается отдельно.',
+    calc_h2: 'Рассчитайте стоимость заказа',
+    calc_intro: 'Выберите параметры',
+    calc_type_label: 'Что нужно пошить',
+    opt_bag: 'Сумка', opt_backpack: 'Рюкзак', opt_shopper: 'Шоппер', opt_cosmetic: 'Косметичка', opt_case: 'Чехол', opt_organizer: 'Органайзер', opt_corporate: 'Корпоративная продукция',
+    calc_material_label: 'Материал',
+    opt_mat_textile: 'Текстиль / брезент', opt_mat_ecoleather: 'Искусственная кожа (экокожа)', opt_mat_leather: 'Натуральная кожа', opt_mat_tech: 'Техническая ткань',
+    calc_qty_label: 'Количество изделий (от 50 шт)',
+    qty_minus_label: 'Уменьшить количество', qty_plus_label: 'Увеличить количество',
+    qty_hint: '− уменьшает количество, + увеличивает. Можно ввести число вручную.',
+    calc_btn: 'Рассчитать стоимость',
+    calc_result_label: 'Ориентировочная стоимость партии',
+    calc_result_note: 'Это предварительный расчёт. Точная цена зависит от сложности модели и уточняется после согласования образца.',
+    calc_cta: 'Отправить заявку на точный расчёт',
+    order_h2: 'Получить точный расчёт',
+    contact_telegram: '@shveypro в Telegram',
+    contacts_note: '* контакты примерные (включая email для формы заявки) — замените на реальные перед публикацией',
+    form_name: 'Ваше имя', form_phone: 'Телефон или Telegram', form_task: 'Что нужно пошить', form_qty: 'Количество (от 50 шт)',
+    form_file_label: 'Прикрепить фото / эскиз / образец',
+    order_submit_btn: 'Получить точный расчёт',
+    order_sending: 'Отправляем...',
+    order_success: '✅ Спасибо! Заявка отправлена. Мы свяжемся с вами для уточнения деталей.',
+    order_error: 'Не получилось отправить заявку. Напишите нам напрямую в <a href="https://t.me/shveypro">Telegram</a> или <a href="https://wa.me/79991234567">WhatsApp</a>.',
+    back_to_top: '↑ Вернуться к началу',
+    footer_line1: 'ШвейПро — пошив изделий на заказ для бизнеса'
+  },
+  en: {
+    title: 'ShveyPro — custom bags, backpacks, and textile products for business',
+    header_cta: 'Get a Quote',
+    hero_eyebrow: 'Custom production · for business',
+    hero_h1: 'Custom-made bags, backpacks, and <em>textile products</em> for business',
+    hero_sub: 'From design to a packaged batch — full-cycle production at our own facility. We work from photos, sketches, samples, or ready patterns.',
+    hero_cta: 'Get a Price Quote',
+    hero_stat1_num: '50+ pcs', hero_stat1_label: 'minimum batch',
+    hero_stat2_num: 'full cycle', hero_stat2_label: 'from design to packaging',
+    hero_stat3_num: 'sample', hero_stat3_label: 'before the batch run',
+    hero_video_aria: 'ShveyPro promo video with music',
+    sound_on_label: 'Turn sound on', sound_off_label: 'Turn sound off',
+    about_h2: 'About the production',
+    about1_num: '10+ years', about1_text: 'of experience sewing products for business',
+    about2_num: '20+ units', about2_text: 'of sewing and cutting equipment',
+    about3_num: '300 m²', about3_text: 'of our own production facility',
+    about_note: '* figures are approximate — for the finished prototype, replace them with real production data',
+    products_h2: 'What we make',
+    product1_alt: 'Custom-made bags', product1_h3: 'Bags', product1_p: 'leather, eco-leather, and heavy-duty textile',
+    product2_alt: 'Custom-made backpacks', product2_h3: 'Backpacks', product2_p: 'business, sports, and promo models',
+    product3_alt: 'Custom-made totes', product3_h3: 'Totes', product3_p: 'fabric and branded',
+    product4_alt: 'Custom-made cosmetic bags', product4_h3: 'Cosmetic bags', product4_p: 'any shape and size',
+    product5_alt: 'Custom-made cases', product5_h3: 'Cases', product5_p: 'for devices and accessories',
+    product6_alt: 'Custom-made organizers', product6_h3: 'Organizers', product6_p: 'for home, office, and travel',
+    product7_alt: 'Corporate merchandise — set of products', product7_h3: 'Corporate merchandise', product7_p: 'gifts and branded items for staff and clients',
+    product8_alt: 'Custom-made individual products', product8_h3: 'Custom pieces', product8_p: 'built to your own specification',
+    why_kicker: 'Why choose us',
+    why_h2: 'Full cycle, no compromises',
+    why1_h3: 'Full cycle under one roof', why1_p: 'From design development to packaging the finished batch — no need to look for different contractors.',
+    why2_h3: 'We work with any kind of brief', why2_p: 'Send a photo, sketch, sample, or ready pattern — even without technical documentation, we will figure it out and offer a solution.',
+    why3_h3: 'Small batches — from 50 pieces', why3_p: 'No need to order thousands of units right away — you can start with a small batch.',
+    why4_h3: 'Sample first, then the batch', why4_p: 'You see and approve the finished product before full production starts.',
+    why5_h3: 'Quality control', why5_p: 'We check the quality of materials and hardware before production starts, and monitor stitching quality at every stage — not just at the final check.',
+    why6_h3: 'Classic and creative', why6_p: 'We sew both strict business models and non-standard, creative ideas — bringing your design to life, not just typical samples.',
+    life_kicker: 'In use, not on display',
+    life_h2: 'Products in everyday life',
+    life_lede: 'Our products are not made for a catalogue — people use them every day: around the city, at meetings, on the road. That is how they should look in photos too.',
+    life1_alt: 'Custom-made backpack, close-up on the shoulder in everyday use', life1_h3: 'Backpack in the city', life1_p: 'Light and practical, with room for a laptop and essentials — for people who are on the move all day.',
+    life2_alt: 'Custom-made business satchel bag in everyday use', life2_h3: 'Bag for a meeting', life2_p: 'A structured shape that holds up all day — from negotiations to the end of the workday.',
+    life3_alt: 'Custom-made cosmetic organizer with separate compartments for cosmetics and bottles', life3_h3: 'Everything in its place', life3_p: 'A pocket for brushes, a mesh for skincare, a separate case for bottles — a place for everything.',
+    team_kicker: 'Who makes your order',
+    team_h2: 'Our team',
+    team_lede: 'Every product goes through more than one person — a coordinated chain of specialists, from pattern-making to packaging the finished batch.',
+    team1_alt: 'Pattern maker developing the product pattern', team1_role: 'Pattern maker', team1_desc: 'Developing the product construction, patterns, and technical documentation for production.',
+    team2_alt: 'Technologist checking the product fit on a sample', team2_role: 'Technologist', team2_desc: 'Developing the production process, preparing the product, and launching it into production.',
+    team3_alt: 'Seamstress assembling a product on the production line', team3_role: 'Seamstress', team3_desc: 'Sewing and assembling products in line with production technology and quality requirements.',
+    team4_alt: 'Quality control of a finished product', team4_role: 'Quality control', team4_desc: 'Checking quality at every stage of production — from incoming material checks to the finished product.',
+    team5_alt: 'Packaging finished products for shipment', team5_role: 'Packaging', team5_desc: 'Preparing finished products for shipment and packaging batches.',
+    directions_kicker: 'Two directions',
+    directions_h2: 'Classic and creative in one production',
+    directions_lede: 'We sew both on the same equipment — the only difference is the brief.',
+    classic_tag: 'Classic', classic_h3: 'A clean shape that never goes out of style',
+    classic_p1: 'Clean lines, calm proportions, quality hardware. The choice for business gifts, corporate collections, and everyday models — the piece works for the brand without drawing attention to itself.',
+    classic_p2: 'Leather, eco-leather, heavy-duty textile — to fit your brief and batch budget.',
+    classic_alt: 'Classic structured tote bag made of heavy leather',
+    creative_tag: 'Creative', creative_h3: 'Shape as a statement',
+    creative_p1: 'Non-standard cuts, sculptural volume, original geometry — products that will not be mistaken for typical catalogue items. Great for capsule collections and creative brands, where the shape itself is part of the story.',
+    creative_p2: 'We handle complex patterns and unconventional materials — just send a sketch or reference.',
+    creative_alt: 'Sculptural designer bags with an unconventional pleated shape',
+    testimonials_h2: 'Customer reviews',
+    t1_quote: '“We ordered a batch of corporate backpacks — they were made quickly, the stitching quality is excellent, every piece is identical, no defects.”',
+    t1_author: 'Marina K.<span>sample review — replace with a real name/company</span>',
+    t2_quote: '“We liked that they sent a sample for approval first — there were no mistakes in the final batch.”',
+    t2_author: 'Dmitry, Example LLC<span>sample review — replace with a real name/company</span>',
+    t3_quote: '“We have been working together for two years now, always on schedule, with exactly the materials we agreed on.”',
+    t3_author: 'Anna V.<span>sample review — replace with a real name/company</span>',
+    process_h2: 'How the work goes',
+    step1_h3: 'Request', step1_p: 'Send a photo, sketch, or brief — we discuss the details and materials',
+    step2_h3: 'Sample', step2_p: 'We sew one unit for approval',
+    step3_h3: 'Production', step3_p: 'Once approved, we launch production of the full batch',
+    step4_h3: 'Packaging and shipping', step4_p: 'We pack and hand over the finished batch',
+    materials_h2: 'Materials we work with',
+    mat_leather_h3: 'Leather', mat_leather_1: 'Genuine leather', mat_leather_2: 'Faux leather (eco-leather)',
+    mat_textile_h3: 'Textile', mat_textile_1: 'Heavy-duty textile', mat_textile_2: 'Canvas', mat_textile_3: 'Technical fabrics', mat_textile_4: 'Water-resistant', mat_textile_5: 'Wear-resistant',
+    mat_extra_h3: 'Additional materials', mat_extra_1: 'Lining fabrics', mat_extra_2: 'Reinforcing materials',
+    mat_hardware_h3: 'Hardware', mat_hardware_1: 'Zippers', mat_hardware_2: 'Carabiners', mat_hardware_3: 'Webbing straps',
+    faq_h2: 'Frequently asked questions',
+    faq1_q: 'What is the minimum order quantity?', faq1_a: 'From 50 pieces per batch. Exceptions are possible for certain models — terms are discussed individually.',
+    faq2_q: 'Can I order a product from just a photo?', faq2_a: 'Yes. We will develop the pattern ourselves based on a photo, sketch, or sample.',
+    faq3_q: 'How long does it take to produce a batch?', faq3_a: 'The timeline depends on the volume and complexity of the product. We confirm the exact timeline after the sample is approved.',
+    faq4_q: 'Can changes be made after production starts?', faq4_a: 'Changes can be made at the sample approval stage. After the batch is launched, the possibility of changes is discussed separately.',
+    calc_h2: 'Calculate your order cost',
+    calc_intro: 'Choose the parameters',
+    calc_type_label: 'What do you need sewn',
+    opt_bag: 'Bag', opt_backpack: 'Backpack', opt_shopper: 'Tote', opt_cosmetic: 'Cosmetic bag', opt_case: 'Case', opt_organizer: 'Organizer', opt_corporate: 'Corporate merchandise',
+    calc_material_label: 'Material',
+    opt_mat_textile: 'Textile / canvas', opt_mat_ecoleather: 'Faux leather (eco-leather)', opt_mat_leather: 'Genuine leather', opt_mat_tech: 'Technical fabric',
+    calc_qty_label: 'Quantity (from 50 pcs)',
+    qty_minus_label: 'Decrease quantity', qty_plus_label: 'Increase quantity',
+    qty_hint: '− decreases the quantity, + increases it. You can also type a number manually.',
+    calc_btn: 'Calculate cost',
+    calc_result_label: 'Estimated batch cost',
+    calc_result_note: 'This is a preliminary estimate. The exact price depends on the model complexity and is confirmed after the sample is approved.',
+    calc_cta: 'Request an exact quote',
+    order_h2: 'Get an exact quote',
+    contact_telegram: '@shveypro on Telegram',
+    contacts_note: '* contact details are placeholders (including the email for the order form) — replace with real ones before launch',
+    form_name: 'Your name', form_phone: 'Phone or Telegram', form_task: 'What needs to be sewn', form_qty: 'Quantity (from 50 pcs)',
+    form_file_label: 'Attach a photo / sketch / sample',
+    order_submit_btn: 'Get an exact quote',
+    order_sending: 'Sending...',
+    order_success: '✅ Thank you! Your request has been sent. We will contact you to clarify the details.',
+    order_error: 'Could not send the request. Message us directly on <a href="https://t.me/shveypro">Telegram</a> or <a href="https://wa.me/79991234567">WhatsApp</a>.',
+    back_to_top: '↑ Back to top',
+    footer_line1: 'ShveyPro — custom-made products for business'
+  },
+  pt: {
+    title: 'ShveyPro — confeção de malas, mochilas e artigos têxteis por encomenda para empresas',
+    header_cta: 'Pedir Orçamento',
+    hero_eyebrow: 'Produção por encomenda · para empresas',
+    hero_h1: 'Confeção de malas, mochilas e <em>artigos têxteis</em> por encomenda para empresas',
+    hero_sub: 'Do design à encomenda embalada — ciclo de produção completo nas nossas próprias instalações. Trabalhamos a partir de fotos, esboços, amostras ou moldes já prontos.',
+    hero_cta: 'Pedir Orçamento da Encomenda',
+    hero_stat1_num: 'a partir de 50 un.', hero_stat1_label: 'lote mínimo',
+    hero_stat2_num: 'ciclo completo', hero_stat2_label: 'do design à embalagem',
+    hero_stat3_num: 'amostra', hero_stat3_label: 'antes do arranque do lote',
+    hero_video_aria: 'Vídeo promocional da ShveyPro com música',
+    sound_on_label: 'Ativar som', sound_off_label: 'Desativar som',
+    about_h2: 'Sobre a produção',
+    about1_num: '10+ anos', about1_text: 'de experiência na confeção de artigos para empresas',
+    about2_num: '20+ unidades', about2_text: 'de equipamento de costura e corte',
+    about3_num: '300 m²', about3_text: 'de instalações de produção próprias',
+    about_note: '* os números são aproximados; para o protótipo final, substitua por dados reais da produção',
+    products_h2: 'O que confecionamos',
+    product1_alt: 'Malas por encomenda', product1_h3: 'Malas', product1_p: 'em pele, pele sintética e têxtil resistente',
+    product2_alt: 'Mochilas por encomenda', product2_h3: 'Mochilas', product2_p: 'modelos profissionais, desportivos e promocionais',
+    product3_alt: 'Totes por encomenda', product3_h3: 'Totes', product3_p: 'em tecido e personalizadas com marca',
+    product4_alt: 'Necessaires por encomenda', product4_h3: 'Necessaires', product4_p: 'de qualquer forma e tamanho',
+    product5_alt: 'Capas por encomenda', product5_h3: 'Capas', product5_p: 'para dispositivos e acessórios',
+    product6_alt: 'Organizadores por encomenda', product6_h3: 'Organizadores', product6_p: 'para casa, escritório e viagem',
+    product7_alt: 'Produtos corporativos — conjunto de artigos', product7_h3: 'Produtos corporativos', product7_p: 'lembranças e merchandising para colaboradores e clientes',
+    product8_alt: 'Peças individuais por encomenda', product8_h3: 'Peças personalizadas', product8_p: 'de acordo com as suas especificações',
+    why_kicker: 'Porque nos escolhem',
+    why_h2: 'Ciclo completo, sem compromissos',
+    why1_h3: 'Ciclo completo num só lugar', why1_p: 'Do desenvolvimento do design até à embalagem do lote final — sem necessidade de procurar vários fornecedores.',
+    why2_h3: 'Trabalhamos com qualquer tipo de briefing', why2_p: 'Envie uma foto, um esboço, uma amostra ou moldes já prontos — mesmo sem documentação técnica, encontramos uma solução.',
+    why3_h3: 'Lotes pequenos — a partir de 50 peças', why3_p: 'Não é preciso encomendar milhares de unidades de uma vez — pode começar com um lote pequeno.',
+    why4_h3: 'Primeiro a amostra, depois o lote', why4_p: 'Vê e aprova o produto acabado antes do arranque da produção principal.',
+    why5_h3: 'Controlo de qualidade', why5_p: 'Verificamos a qualidade dos materiais e acessórios antes de iniciar a produção, e controlamos a qualidade da costura em cada etapa — não só na verificação final.',
+    why6_h3: 'Clássico e criativo', why6_p: 'Confecionamos modelos clássicos e também ideias criativas e não convencionais — concretizamos o seu design, não apenas modelos-padrão.',
+    life_kicker: 'Em uso, não em vitrine',
+    life_h2: 'Os artigos no dia a dia',
+    life_lede: 'Os nossos artigos não são feitos para catálogo — são usados todos os dias: na cidade, em reuniões, em viagem. É assim que também devem aparecer nas fotos.',
+    life1_alt: 'Mochila por encomenda em grande plano ao ombro, em uso diário', life1_h3: 'Mochila na cidade', life1_p: 'Leve e prática, com espaço para o portátil e para o essencial — para quem está o dia todo em movimento.',
+    life2_alt: 'Mala satchel profissional por encomenda em uso diário', life2_h3: 'Mala para uma reunião', life2_p: 'Uma forma estruturada que se mantém o dia todo — de uma reunião até ao fim do dia de trabalho.',
+    life3_alt: 'Necessaire-organizador por encomenda com compartimentos separados para cosméticos e frascos', life3_h3: 'Tudo no seu lugar', life3_p: 'Um bolso para pincéis, uma rede para produtos de cuidado, um compartimento próprio para frascos — um lugar para cada coisa.',
+    team_kicker: 'Quem faz a sua encomenda',
+    team_h2: 'A nossa equipa',
+    team_lede: 'Cada artigo passa por mais do que uma pessoa — uma cadeia coordenada de especialistas, desde o desenvolvimento dos moldes até à embalagem do lote final.',
+    team1_alt: 'Modelista a desenvolver o molde do artigo', team1_role: 'Modelista', team1_desc: 'Desenvolvimento da construção do artigo, moldes e documentação técnica para a produção.',
+    team2_alt: 'Técnica a verificar o ajuste do artigo numa amostra', team2_role: 'Técnica de produção', team2_desc: 'Desenvolvimento do processo tecnológico, preparação do artigo e arranque da produção.',
+    team3_alt: 'Costureira a montar o artigo na produção', team3_role: 'Costureira', team3_desc: 'Confeção e montagem dos artigos de acordo com a tecnologia de produção e os requisitos de qualidade.',
+    team4_alt: 'Controlo de qualidade do artigo acabado', team4_role: 'Controlo de qualidade', team4_desc: 'Verificação da qualidade em todas as etapas da produção — desde o controlo dos materiais até à inspeção do artigo final.',
+    team5_alt: 'Embalagem dos artigos acabados para expedição', team5_role: 'Embalagem', team5_desc: 'Preparação dos artigos acabados para expedição e embalagem dos lotes.',
+    directions_kicker: 'Duas vertentes',
+    directions_h2: 'Clássico e criativo na mesma produção',
+    directions_lede: 'Confecionamos ambos nas mesmas instalações — a diferença está apenas no briefing.',
+    classic_tag: 'Clássico', classic_h3: 'Uma forma sóbria que nunca sai de moda',
+    classic_p1: 'Corte depurado, proporções equilibradas, acessórios de qualidade. A escolha para brindes empresariais, coleções corporativas e modelos do dia a dia — a peça valoriza a marca sem chamar a atenção para si própria.',
+    classic_p2: 'Pele, pele sintética, têxtil resistente — de acordo com o seu briefing e orçamento.',
+    classic_alt: 'Tote clássico e estruturado em pele resistente',
+    creative_tag: 'Criativo', creative_h3: 'A forma como declaração',
+    creative_p1: 'Cortes não convencionais, volume escultórico, geometria autoral — artigos que não se confundem com produtos de catálogo comuns. Ideal para coleções capsule e marcas criativas, onde a própria forma faz parte da história.',
+    creative_p2: 'Trabalhamos moldes complexos e materiais não convencionais — envie um esboço ou uma referência.',
+    creative_alt: 'Malas de autor esculturais com uma forma plissada não convencional',
+    testimonials_h2: 'Opiniões de clientes',
+    t1_quote: '«Encomendámos um lote de mochilas corporativas — foi rápido, a qualidade da costura é excelente, todos os artigos iguais, sem defeitos.»',
+    t1_author: 'Marina K.<span>opinião de exemplo — substitua por uma real, com nome/empresa</span>',
+    t2_quote: '«Gostámos de receber primeiro uma amostra para aprovação — não houve erros no lote final.»',
+    t2_author: 'Dmitri, Exemplo Lda<span>opinião de exemplo — substitua por uma real, com nome/empresa</span>',
+    t3_quote: '«Trabalhamos juntos há já dois anos, cumprem sempre os prazos, com exatamente os materiais acordados.»',
+    t3_author: 'Ana V.<span>opinião de exemplo — substitua por uma real, com nome/empresa</span>',
+    process_h2: 'Como funciona o processo',
+    step1_h3: 'Pedido', step1_p: 'Envia uma foto, esboço ou briefing — combinamos os detalhes e os materiais',
+    step2_h3: 'Amostra', step2_p: 'Confecionamos uma peça única para aprovação',
+    step3_h3: 'Produção', step3_p: 'Depois da aprovação, arrancamos com a produção de todo o lote',
+    step4_h3: 'Embalagem e envio', step4_p: 'Embalamos e entregamos o lote acabado',
+    materials_h2: 'Com que materiais trabalhamos',
+    mat_leather_h3: 'Pele', mat_leather_1: 'Pele natural', mat_leather_2: 'Pele sintética (eco-pele)',
+    mat_textile_h3: 'Têxtil', mat_textile_1: 'Têxtil resistente', mat_textile_2: 'Lona', mat_textile_3: 'Tecidos técnicos', mat_textile_4: 'Resistentes à água', mat_textile_5: 'Resistentes ao desgaste',
+    mat_extra_h3: 'Materiais adicionais', mat_extra_1: 'Forros', mat_extra_2: 'Materiais de reforço',
+    mat_hardware_h3: 'Acessórios', mat_hardware_1: 'Fechos de correr', mat_hardware_2: 'Mosquetões', mat_hardware_3: 'Fitas/correias',
+    faq_h2: 'Perguntas frequentes',
+    faq1_q: 'Qual é a quantidade mínima de encomenda?', faq1_a: 'A partir de 50 peças por lote. Para alguns modelos são possíveis exceções — as condições são combinadas individualmente.',
+    faq2_q: 'É possível encomendar um artigo só a partir de uma fotografia?', faq2_a: 'Sim. Desenvolvemos o molde a partir de uma fotografia, esboço ou amostra.',
+    faq3_q: 'Quanto tempo demora a produção de um lote?', faq3_a: 'O prazo depende do volume e da complexidade do artigo. Confirmamos o prazo exato depois da aprovação da amostra.',
+    faq4_q: 'É possível fazer alterações depois do início da produção?', faq4_a: 'As alterações podem ser feitas na fase de aprovação da amostra. Depois do arranque do lote, a possibilidade de alterações é combinada separadamente.',
+    calc_h2: 'Calcule o custo da sua encomenda',
+    calc_intro: 'Escolha os parâmetros',
+    calc_type_label: 'O que precisa de confecionar',
+    opt_bag: 'Mala', opt_backpack: 'Mochila', opt_shopper: 'Tote', opt_cosmetic: 'Necessaire', opt_case: 'Capa', opt_organizer: 'Organizador', opt_corporate: 'Produtos corporativos',
+    calc_material_label: 'Material',
+    opt_mat_textile: 'Têxtil / lona', opt_mat_ecoleather: 'Pele sintética (eco-pele)', opt_mat_leather: 'Pele natural', opt_mat_tech: 'Tecido técnico',
+    calc_qty_label: 'Quantidade de artigos (a partir de 50 un.)',
+    qty_minus_label: 'Diminuir quantidade', qty_plus_label: 'Aumentar quantidade',
+    qty_hint: '− diminui a quantidade, + aumenta. Também pode introduzir o número manualmente.',
+    calc_btn: 'Calcular custo',
+    calc_result_label: 'Custo estimado do lote',
+    calc_result_note: 'Esta é uma estimativa preliminar. O preço exato depende da complexidade do modelo e é confirmado após a aprovação da amostra.',
+    calc_cta: 'Pedir um orçamento exato',
+    order_h2: 'Receber um orçamento exato',
+    contact_telegram: '@shveypro no Telegram',
+    contacts_note: '* os contactos são apenas exemplos (incluindo o email do formulário) — substitua por contactos reais antes de publicar',
+    form_name: 'O seu nome', form_phone: 'Telefone ou Telegram', form_task: 'O que precisa de confecionar', form_qty: 'Quantidade (a partir de 50 un.)',
+    form_file_label: 'Anexar foto / esboço / amostra',
+    order_submit_btn: 'Receber um orçamento exato',
+    order_sending: 'A enviar...',
+    order_success: '✅ Obrigado! O seu pedido foi enviado. Vamos contactá-lo para esclarecer os detalhes.',
+    order_error: 'Não foi possível enviar o pedido. Contacte-nos diretamente pelo <a href="https://t.me/shveypro">Telegram</a> ou <a href="https://wa.me/79991234567">WhatsApp</a>.',
+    back_to_top: '↑ Voltar ao topo',
+    footer_line1: 'ShveyPro — confeção de artigos por encomenda para empresas'
+  }
+};
+
+var currentLang = 'ru';
+
+function t(key) {
+  var dict = translations[currentLang] || translations.ru;
+  return (dict[key] !== undefined ? dict[key] : translations.ru[key]) || '';
+}
+
+function applyLanguage(lang) {
+  if (!translations[lang]) lang = 'ru';
+  currentLang = lang;
+  var dict = translations[lang];
+
+  document.documentElement.setAttribute('lang', lang);
+  if (dict.title) document.title = dict.title;
+
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+
+  document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n-html');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+
+  document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
+    el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
+      var sep = pair.indexOf(':');
+      var attr = pair.slice(0, sep);
+      var key = pair.slice(sep + 1);
+      if (dict[key] !== undefined) el.setAttribute(attr, dict[key]);
+    });
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.classList.toggle('is-active', btn.getAttribute('data-lang-btn') === lang);
+  });
+
+  var video = document.getElementById('hero-video');
+  var soundBtn = document.getElementById('hero-sound-toggle');
+  if (video && soundBtn) {
+    soundBtn.setAttribute('aria-label', video.muted ? dict.sound_on_label : dict.sound_off_label);
+  }
+
+  try { localStorage.setItem('shveypro_lang', lang); } catch (e) {}
+}
+
+function detectInitialLang() {
+  try {
+    var saved = localStorage.getItem('shveypro_lang');
+    if (saved && translations[saved]) return saved;
+  } catch (e) {}
+  return 'ru';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  applyLanguage(detectInitialLang());
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { applyLanguage(btn.getAttribute('data-lang-btn')); });
+  });
+});
+
 function toggleHeroSound() {
   var video = document.getElementById('hero-video');
   var btn = document.getElementById('hero-sound-toggle');
   video.muted = !video.muted;
   if (!video.muted) {
     video.play();
-    btn.setAttribute('aria-label', 'Выключить звук');
+    btn.setAttribute('aria-label', t('sound_off_label'));
     btn.classList.add('is-unmuted');
   } else {
-    btn.setAttribute('aria-label', 'Включить звук');
+    btn.setAttribute('aria-label', t('sound_on_label'));
     btn.classList.remove('is-unmuted');
   }
 }
@@ -966,7 +1383,7 @@ function submitOrderForm(e) {
   var errorBox = document.getElementById('order-error');
   errorBox.style.display = 'none';
   btn.disabled = true;
-  btn.textContent = 'Отправляем...';
+  btn.textContent = t('order_sending');
 
   // TODO перед запуском у заказчика: заменить на реальный email заказчика
   // (на этот адрес FormSubmit пришлёт письмо с подтверждением один раз)
@@ -982,7 +1399,7 @@ function submitOrderForm(e) {
     })
     .catch(function () {
       btn.disabled = false;
-      btn.textContent = 'Получить точный расчёт';
+      btn.textContent = t('order_submit_btn');
       errorBox.style.display = 'block';
     });
 
